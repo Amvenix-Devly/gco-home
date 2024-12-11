@@ -2,11 +2,10 @@
 
 import { TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Tabs } from '@radix-ui/react-tabs'
-import Image from 'next/image'
 import FbTab from './FbTab'
 import XTab from './TwTab'
 
-const Instagram = ({fb,x}:any) => {
+const Instagram = ({ fb, x }: any) => {
   return (
     <section>
       <div className="container px-3 py-5">
@@ -20,46 +19,21 @@ const Instagram = ({fb,x}:any) => {
             <div className="flex justify-center">
               <TabsList>
                 <TabsTrigger value="fb">Facebook</TabsTrigger>
-                <TabsTrigger value="ins">X Twitter</TabsTrigger>
+                <TabsTrigger value="ins">X(Twitter)</TabsTrigger>
               </TabsList>
             </div>
             <div className="w-full">
               <TabsContent value="fb">
-          
-                <FbTab fb={fb}/>
+                <FbTab fb={fb} />
               </TabsContent>
               <TabsContent value="ins">
-                <XTab x={x}/>
+                <XTab x={x} />
               </TabsContent>
             </div>
           </Tabs>
         </div>
-        
       </div>
     </section>
-  )
-}
-
-const SocialItem = () => {
-  return (
-    <div className="flex flex-wrap justify-center gap-4">
-      {Array(12)
-        .fill(0)
-        .map((_, i) => (
-          <div
-            key={i}
-            className="w-[calc(50%-20px)] sm:w-[calc(33%-20px)] lg:w-[calc(25%-20px)]"
-          >
-            <Image
-              width={200}
-              height={200}
-              className="w-full h-full object-cover"
-              src={'https://picsum.photos/200?q=' + i}
-              alt=""
-            />
-          </div>
-        ))}
-    </div>
   )
 }
 

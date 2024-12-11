@@ -47,6 +47,7 @@ const AddXPost = () => {
         .then((data) => {
           console.log(data);
           refresh();
+          setPostLink('');
           setShow(false);
         })
         .catch((error) => {

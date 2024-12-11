@@ -46,6 +46,7 @@ const AddFbPost = () => {
         .then((data) => {
           console.log(data)
           refresh()
+          setPostLink('')
           setShow(false)
         })
         .catch((error) => {
@@ -62,19 +63,25 @@ const AddFbPost = () => {
         <Button>Open modal</Button>
       </CredenzaTrigger>
       {show && (
-        <CredenzaContent className="max-w-[500px]">
+        <CredenzaContent className="max-w-[600px]">
           <CredenzaHeader>
             <CredenzaTitle>Add New Fb post</CredenzaTitle>
             <CredenzaDescription> </CredenzaDescription>
           </CredenzaHeader>
-          <CredenzaBody>
+          <CredenzaBody className="overflow-auto">
             <div>
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <div>
-                  <Label>Post Link</Label>
+                  <div className="flex items-center justify-between">
+                    <Label>Post Link</Label>
+                    <a
+                      target="_blank"
+                      href="https://github.com/justinmahar/react-social-media-embed/issues/14#issuecomment-1297458134"
+                    >
+                      How?
+                    </a>
                   </div>
-                  
+
                   <Input
                     placeholder="Enter Post Link"
                     required
@@ -82,7 +89,7 @@ const AddFbPost = () => {
                     onChange={(e) => setPostLink(e.target.value)}
                   />
                 </div>
-                
+
                 <div className="space-y-2">
                   <Label>Preview</Label>
                   <div className="aspect-square border flex justify-center items-center">

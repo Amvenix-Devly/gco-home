@@ -3,6 +3,8 @@ import { Button } from '@/components/ui/button'
 import db from '@/lib/db'
 import AddFbPost from './AddFbPost'
 import ShowEmbade from './ShowEmbade'
+import DeleteFbPost from './DeleteFbPost'
+
 const countAllFbPost = async () => await db?.fbEmbade.count()
 const getAllFbPost = async () =>
   await db?.fbEmbade.findMany({
@@ -34,7 +36,7 @@ const FbPostPage = async () => {
                         Date : {new Date(post.createdAt).toLocaleDateString()}
                       </p>
                     </div>
-                    <Button>Delete</Button>
+                    <DeleteFbPost postId={post.id} />
                   </div>
                 </div>
               </div>

@@ -2,7 +2,7 @@ import AdminPageLayout from '@/components/custom/admin/shared/AdminPageLayout'
 import db from '@/lib/db'
 import AddXPost from './AddXPost'
 import ShowEmbade from './ShowEmbade'
-import { Button } from '@/components/ui/button'
+import DeleteXPost from './DeleteXPost'
 const countAllXPost = async () => await db?.twEmbade.count()
 const AllTwPost = async () => await db?.twEmbade.findMany({
   orderBy: {
@@ -33,7 +33,7 @@ const CAddPost = async () => {
                         Date : {new Date(post.createdAt).toLocaleDateString()}
                       </p>
                     </div>
-                    <Button>Delete</Button>
+                    <DeleteXPost postId={post.id} />
                   </div>
                 </div>
               </div>

@@ -1,5 +1,5 @@
 'use client'
-import SiteButton from '@/components/ui/SiteButton'
+import { Button } from '@/components/ui/button'
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
 import { XEmbed } from 'react-social-media-embed'
 
@@ -18,7 +18,14 @@ const XTab = ({ x }: any) => {
         </Masonry>
       </ResponsiveMasonry>
       <div className="flex justify-center pb-2 mt-5">
-        <SiteButton className=" px-6">Show More</SiteButton>
+        <Button
+          asChild
+          className=" px-6 border border-white text-black bg-white px rounded-[2px] py-2 hover:scale-105 z-20 uppercase font-medium"
+        >
+          <a target="_blank" href="https://x.com/Global_Com_Org">
+            Show More
+          </a>
+        </Button>
       </div>
     </div>
   )
