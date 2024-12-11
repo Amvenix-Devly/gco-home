@@ -14,7 +14,7 @@
 /out/
 
 # production
-/build
+/build/
 
 # misc
 .DS_Store
@@ -37,4 +37,4 @@ yarn-error.log*
 next-env.d.ts
 
 certificates
-/prisma/out/
+**/prisma/out/
