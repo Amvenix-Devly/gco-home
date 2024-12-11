@@ -1,4 +1,5 @@
-import { PrismaClient } from "../../prisma/out";
+import { PrismaClient } from "../../dbOut";
+
 
 declare global {
   var db: PrismaClient | undefined;
