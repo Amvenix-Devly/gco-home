@@ -29,7 +29,7 @@ const AdminBlogPage = async () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {allBlogs.map((blog) => (
+          {allBlogs.map((blog:any) => (
             <TableRow key={blog.id}>
               <TableCell>{blog.id}</TableCell>
               <TableCell>
