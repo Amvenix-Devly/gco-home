@@ -67,35 +67,50 @@ const MobileNav = () => {
                 </button>
               </div>
               <div className="flex mt-3 w-full flex-col gap-5 text-stone-300">
-                {navigationData.map((item, index) => (
-                  <MobileNavItem key={index} title={item.title} path={item.path}>
-                    {item.submenu?.map((submenu, subIndex) => (
-                      <Child 
-                        key={subIndex} 
-                        title={submenu.title} 
-                        path={submenu.path}
-                      >
-                        {submenu.items?.map((subItem, itemIndex) => (
-                          'src' in subItem ? (
-                            <ImageBox
-                              key={itemIndex}
-                              title={subItem.title}
-                              src={subItem.src}
-                              path={subItem.path}
-                              linkTitle={subItem.linkTitle}
-                            />
-                          ) : (
-                            <LinkItem
-                              key={itemIndex}
-                              title={subItem.title}
-                              path={subItem.path}
-                            />
-                          )
-                        ))}
-                      </Child>
-                    ))}
-                  </MobileNavItem>
-                ))}
+                {navigationData.map((item, index) => {
+                  return (
+                    <MobileNavItem
+                      key={index}
+                      title={item.title}
+                      path={item.path}
+                    >
+                      {item.submenu?.map((submenu, subIndex) => (
+                        <>
+                          {submenu.items?.some((item) => !('src' in item)) && (
+                            <Child
+                              key={`child-${subIndex}`}
+                              title={submenu.title}
+                              path={submenu.path}
+                            >
+                              {submenu.items
+                                ?.filter((item) => !('src' in item))
+                                .map((subItem, itemIndex) => (
+                                  <LinkItem
+                                    key={itemIndex}
+                                    title={subItem.title}
+                                    path={subItem.path}
+                                  />
+                                ))}
+                            </Child>
+                          )}
+
+                      
+                          {submenu.items
+                            ?.filter((item) => 'src' in item)
+                            .map((subItem, itemIndex) => (
+                              <ImageBox
+                                key={`image-${itemIndex}`}
+                                title={subItem.title}
+                                src={(subItem as any).src}
+                                path={subItem.path}
+                                linkTitle={(subItem as any).linkTitle}
+                              />
+                            ))}
+                        </>
+                      ))}
+                    </MobileNavItem>
+                  )
+                })}
                 <LinkIndItem title="Contact" path="#" />
                 <LinkIndItem title="Login" path="/join" />
                 <LinkIndItem title="018-2487-8880" path="#" />
