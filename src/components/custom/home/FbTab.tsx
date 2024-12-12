@@ -1,8 +1,25 @@
 'use client'
 import { Button } from '@/components/ui/button'
+import dynamic from 'next/dynamic'
 
-import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
-import { FacebookEmbed } from 'react-social-media-embed'
+const ResponsiveMasonry = dynamic(
+  () => import('react-responsive-masonry').then((mod) => mod.ResponsiveMasonry),
+  {
+    ssr: false,
+    loading: () => null,
+  }
+)
+const Masonry = dynamic(() => import('react-responsive-masonry'), {
+  ssr: false,
+  loading: () => null,
+})
+const FacebookEmbed = dynamic(
+  () => import('react-social-media-embed').then((mod) => mod.FacebookEmbed),
+  {
+    ssr: false,
+    loading: () => null,
+  }
+)
 
 const FbTab = ({ fb }: any) => {
   return (

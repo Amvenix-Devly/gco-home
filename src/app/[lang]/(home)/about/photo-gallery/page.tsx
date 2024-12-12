@@ -20,7 +20,7 @@ const PhotoGallaryPage = async () => {
   return (
     <>
       <div className="bg-green-500">
-        <h1 className="text-center text-4xl p-3">MEET THE TEAM</h1>{' '}
+        <h1 className="text-center text-4xl p-3">Image</h1>
       </div>
       <section className="container">
         <SwitChLayout allCat={allCat} />

@@ -65,8 +65,8 @@ const SwitChLayout = ({ allCat }: any) => {
                 >
                   <Image
                     src={item?.coverImage?.fileUrl}
-                    width={400}
-                    height={400}
+                    width={200}
+                    height={200}
                     alt=""
                     onClick={() => {
                       setActiveUrl(item?.coverImage?.fileUrl)
