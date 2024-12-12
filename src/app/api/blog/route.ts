@@ -3,7 +3,7 @@ import db from '@/lib/db'
 import UploadFile, { imageKit } from '@/lib/ImageKit'
 import { headers } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
-import { FileType, Role } from '../../../../prisma/out'
+import { FileType, Role } from '../../../../dbOut'
 
 export const POST = async (req: NextRequest) => {
   const {
@@ -16,8 +16,6 @@ export const POST = async (req: NextRequest) => {
   if (!user || user.type !== Role.ADMIN) {
     return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
   }
-
-
 
   const body = await req.formData()
   const title = body.get('title') as string
@@ -182,6 +180,63 @@ export const PUT = async (req: NextRequest) => {
     return NextResponse.json({ message: 'Blog updated' })
   } catch (error) {
     console.log(error)
+    return NextResponse.json(
+      { message: 'Internal server error' },
+      { status: 500 }
+    )
+  }
+}
+
+export const DELETE = async (req: NextRequest) => {
+  const {
+    data: { user },
+  } = (await getSession({
+    fetchOptions: {
+      headers: await headers(),
+    },
+  })) as any
+  if (!user || user.type !== Role.ADMIN) {
+    return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
+  }
+
+  const blogId = req.nextUrl.searchParams.get('blogId')
+  if (!blogId) {
+    return NextResponse.json(
+      { message: 'Blog ID is required' },
+      { status: 400 }
+    )
+  }
+
+  try {
+    const blog = await db.blogPost.findUnique({
+      where: { id: blogId },
+      select: {
+        coverImage: {
+          select: {
+            fileId: true,
+            id: true,
+          },
+        },
+      },
+    })
+
+    if (blog?.coverImage?.fileId) {
+      await imageKit.deleteFile(blog.coverImage.fileId)
+    }
+
+    await db.blogPost.delete({
+      where: { id: blogId },
+    })
+
+    if (blog?.coverImage?.id) {
+      await db.file.delete({
+        where: { id: blog.coverImage.id },
+      })
+    }
+
+    return NextResponse.json({ message: 'Blog deleted successfully' })
+  } catch (error) {
+    console.error(error)
     return NextResponse.json(
       { message: 'Internal server error' },
       { status: 500 }

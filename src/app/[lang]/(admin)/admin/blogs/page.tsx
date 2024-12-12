@@ -4,6 +4,7 @@ import db from '@/lib/db'
 import AddBlog from './addBlog'
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@/components/ui/table'
 import EditBlog from './EditBlog'
+import DeleteBlog from './DeleteBlog'
 
 const AdminBlogPage = async () => {
   const blogCount = await getBlogCount()
@@ -41,7 +42,7 @@ const AdminBlogPage = async () => {
               <TableCell>{blog.views}</TableCell>
               <TableCell className='space-x-3'>
                 <EditBlog blogId={blog.id} cat={allcat} />
-                <button>Delete</button>
+                <DeleteBlog blogId={blog.id} />
               </TableCell>
             </TableRow>
           ))}

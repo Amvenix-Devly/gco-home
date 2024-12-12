@@ -5,6 +5,7 @@ import Logo from '@/components/shared/Logo'
 import { cn } from '@/lib/utils'
 import { ChevronDown, Search } from 'lucide-react'
 import Link from 'next/link'
+import { navigationData } from './Data'
 
 const DesktopNav = () => {
   return (
@@ -13,244 +14,45 @@ const DesktopNav = () => {
         <div className="flex justify-between items-center ">
           <Logo className="w-[150px]" />
           <div className="flex flex-row gap-5 ">
-            <NavItem path="/" title="Home" />
-
-            <NavItem path="#" title="About Us">
-              <div className="flex justify-between">
-                <NavListItem path="/about" title="Our Organization">
-                  <LinkItem path="/about#about" title="About GCO" />
-                  <LinkItem path="/about#mission" title="Mission vision" />
-                  <LinkItem path="/about#histry" title="History of GCO" />
-                </NavListItem>
-
-                <NavListItem path="/about/team" title="Our Team">
-                  <LinkItem
-                    path="/about/team#BOARD OF DIRECTOR"
-                    title="Board Of Director"
-                  />
-                  <LinkItem
-                    path="/about/team#EXECUTIVE MEMBER"
-                    title="Executive Member"
-                  />
-                  <LinkItem
-                    path="/about/team#ADVISER COUNCIL"
-                    title="Adviser Council"
-                  />
-                  <LinkItem path="/about/team#GCO STAFF" title="Gco Staff" />
-                  <LinkItem
-                    path="/about/team#TYAGI EXECUTIVE"
-                    title="Tyagi Executive"
-                  />
-                </NavListItem>
-
-                <NavListItem path="/about/strength" title="our strength">
-                  <LinkItem
-                    path="/about/strength#tyagiVolunteer"
-                    title="Tyagi volunteer"
-                  />
-                  <LinkItem
-                    path="/about/strength#tyagiFoundation"
-                    title="Tyagi foundation"
-                  />
-                  <LinkItem
-                    path="/about/strength#tyagiResearchCenter"
-                    title="Tyagi research center"
-                  />
-                  <LinkItem
-                    path="/about/strength#tyagiEnterprise"
-                    title="Tyagi enterprise"
-                  />
-                  <LinkItem
-                    path="/about/strength/globalNation"
-                    title="global nation"
-                  />
-                  <LinkItem
-                    path="/about/strength#gcoNursery"
-                    title="GCO Nursery"
-                  />
-                  <LinkItem
-                    path="/about/strength#treelanching"
-                    title="treelanching"
-                  />
-                </NavListItem>
-                <NavListItem path="#" title="Our Impact">
-                  <LinkItem path="/api/report2023" title="annual report 2023" />
-                </NavListItem>
-              </div>
-            </NavItem>
-            <NavItem path="#" title="GCO Wing">
-              <div className="flex justify-between">
-                <div>
-                  <NavListItem path="/about" title="GCO Wing">
-                    <LinkItem path="/about/videos" title="Vidios" />
-                    <LinkItem path="/about/photo-gallery" title="Gallary" />
-                  </NavListItem>
-                </div>
-
-                <ImageBox
-                  linkTitle="Visit our Newsroom"
-                  title="Stay up to date on major announcements, exciting collaborations, and more."
-                  src="https://onetreeplanted.org/cdn/shop/files/newsroom-promo_5000x.jpg?v=1690489113"
-                />
-                <ImageBox
-                  linkTitle="Learn More"
-                  title="We make it simple for anyone to plant trees, and together we can make an incredible impact. "
-                  src="https://onetreeplanted.org/cdn/shop/files/Our_Vision-megamenu_images_4500x.webp?v=1674767633"
-                />
-              </div>
-            </NavItem>
-            <NavItem path="#" title="Get Involved">
-              <div className="flex justify-between">
-                <NavListItem path="#" title="Businesses">
-                  <LinkItem path="#" title="Become A Partner" />
-                  <LinkItem path="#" title="Partners" />
-                  <LinkItem path="#" title="Cryptocurrency" />
-                  <LinkItem path="#" title="Sports Sustainability" />
-                </NavListItem>
-                <NavListItem path="#" title="Individuals">
-                  <LinkItem path="#" title="Monthly Giving" />
-                  <LinkItem path="#" title="Planned Giving" />
-                  <LinkItem path="#" title="Become A Tree Ambassador" />
-                  <LinkItem path="#" title="Teachers & Parents" />
-                </NavListItem>
-                <ImageBox
-                  linkTitle="Learn More"
-                  title="Become a business partner to improve your company’s sustainability initiatives and make an impact. "
-                  src="https://onetreeplanted.org/cdn/shop/files/Business_Sustainability-megamenu_images_4500x.webp?v=1674767903"
-                />
-                <ImageBox
-                  linkTitle="Learn More"
-                  title="See how your support and leadership can help us fund reforestation efforts across the globe. "
-                  src="https://onetreeplanted.org/cdn/shop/files/philanthropic-giving_4500x.jpg?v=1689881074"
-                />
-              </div>
-            </NavItem>
-            <NavItem path="#" title="What we do">
-              <div className="flex justify-between">
-                <div className="flex flex-col gap-5">
-                  <NavListItem path="/what-we-do" title="Climate action">
-                    <LinkItem
-                      path="/what-we-do"
-                      title="One tree for one child"
-                    />
-                    <LinkItem
-                      path="/what-we-do"
-                      title="save life from thunderstorms with plants"
-                    />
-                    <LinkItem
-                      path="/what-we-do"
-                      title="sponsor a tree for future child in Bangladesh"
-                    />
-                    <LinkItem
-                      path="/what-we-do"
-                      title="Disaster Resilience and Relief Programs"
-                    />
-                  </NavListItem>
-
-                  <NavListItem path="/what-we-do" title="health">
-                    <LinkItem
-                      path="/what-we-do"
-                      title="Maternal and Child Health in Bangladesh Slums"
-                    />
-                    <LinkItem
-                      path="/what-we-do"
-                      title="Maternal & Child Nutrition in Char Land, Bangladesh"
-                    />
-                  </NavListItem>
-                </div>
-                <div className="flex flex-col gap-5">
-                  <NavListItem path="/what-we-do" title="Food Security">
-                    <LinkItem
-                      path="/what-we-do"
-                      title="Addressing Hunger Among Bangladesh's Elderly"
-                    />
-                    <LinkItem
-                      path="/what-we-do"
-                      title="Abalamban – Self-Reliance"
-                    />
-                    <LinkItem
-                      path="/what-we-do"
-                      title="Cluster Village Program"
-                    />
-                  </NavListItem>
-
-                  <NavListItem path="/what-we-do" title="Human Rights">
-                    <LinkItem
-                      path="/what-we-do"
-                      title="skill development program"
-                    />
-                  </NavListItem>
-                  <NavListItem path="/what-we-do" title="our events">
-                    <LinkItem
-                      path="/what-we-do"
-                      title="skill development program"
-                    />
-                  </NavListItem>
-                </div>
-
-                <div className="flex flex-col gap-5">
-                  <NavListItem path="/what-we-do" title="campaigns">
-                    <LinkItem
-                      path="/what-we-do"
-                      title="Nutrition and Health Awareness Campaigns"
-                    />
-                    <LinkItem
-                      path="/what-we-do"
-                      title="Hygiene and Sanitation Awareness Campaigns"
-                    />
-                    <LinkItem
-                      path="/what-we-do"
-                      title="Mobile Campaigns for Health, Hygiene, and Social Awareness"
-                    />
-                  </NavListItem>
-
-                  <NavListItem path="/what-we-do" title="training">
-                    <LinkItem path="/what-we-do" title="ICT training program" />
-                  </NavListItem>
-                </div>
-                {/* <div className="flex flex-col gap-10">
-                  <NavListItem path="#" title="Education">
-                    <LinkItem path="#" title="Projects" />
-                    <LinkItem path="#" title="Urban Forestry" />
-                  </NavListItem>
-                  <NavListItem path="#" title="Resources">
-                    <LinkItem path="#" title="Videos" />
-                    <LinkItem path="#" title="Photos" />
-                    <LinkItem path="#" title="SdGS" />
-                    <LinkItem path="#" title="Maps" />
-                  </NavListItem>
-                </div>
-                <ImageBox
-                  linkTitle="Learn More"
-                  title="Read about stories from the field, interesting facts about trees and get your healthy dose of nature. "
-                  src="https://onetreeplanted.org/cdn/shop/files/Our-Blog-megamenu-images_4000x.webp?v=1676321660"
-                />
-                <ImageBox
-                  linkTitle="Learn More"
-                  title="Comprised of lesson plans, learning modules, resources, and activities, our T.R.E.E.S. School Program is the perfect addition to your curriculum. "
-                  src="https://onetreeplanted.org/cdn/shop/files/EE_megamenu_images_4500x.webp?v=1674843679"
-                /> */}
-              </div>
-            </NavItem>
-            <NavItem path="#" title="Where we do">
-              <div className="flex justify-between">
-                <NavListItem path="#" title="">
-                  <LinkItem path="#" title="Bangladesh" />
-                  <LinkItem path="#" title="Zimbabwe" />
-                  <LinkItem path="#" title="Uganda" />
-                </NavListItem>
-                <ImageBox
-                  linkTitle="Shop now"
-                  title="Our fan-favorite Reforestation T-Shirt. Wear it with pride to show your support of reforesting our planet, one tree at a time. "
-                  src="https://onetreeplanted.org/cdn/shop/files/Mega_Menu_Image_2_1_a5088b7a-fa61-4d0b-9c6a-8a32dfb8adfd_4500x.jpg?v=1699972315"
-                />
-                <ImageBox
-                  linkTitle="Gift a tree"
-                  title="Give the gift that lasts a lifetime! Choose an image, write your personalized message and select a delivery date to gift a tree. "
-                  src="https://onetreeplanted.org/cdn/shop/files/gift-trees-mega-menu_2x_cb75d577-44b5-4b97-9796-04c5f4d3a921_2500x.jpg?v=1681420564"
-                />
-              </div>
-            </NavItem>
+            {navigationData.map((navItem, index) => (
+              <NavItem key={index} path={navItem.path} title={navItem.title}>
+                {navItem.submenu && (
+                  <div className="flex justify-between">
+                    {navItem.submenu.map((submenuItem, idx) => (
+                      submenuItem.title !== 'Image Boxes' ? (
+                        <NavListItem
+                          key={idx}
+                          path={submenuItem.path as string}
+                          title={submenuItem.title}
+                        >
+                          {submenuItem.items &&
+                            submenuItem.items.map((item, subIdx) => (
+                              <LinkItem
+                                key={subIdx}
+                                path={item.path}
+                                title={item.title}
+                              />
+                            ))}
+                        </NavListItem>
+                      ) : null
+                    ))}
+                    {navItem.submenu
+                      .filter((submenuItem) => submenuItem.title === 'Image Boxes')
+                      .flatMap((imageBoxItem) =>
+                        imageBoxItem.items.map((imgItem, imgIdx) => (
+                          <ImageBox
+                            key={imgIdx}
+                            title={imgItem.title}
+                            src={'src' in imgItem ? imgItem.src : ''}
+                            linkTitle={'linkTitle' in imgItem ? imgItem.linkTitle : ''}
+                            path={imgItem.path}
+                          />
+                        ))
+                      )}
+                  </div>
+                )}
+              </NavItem>
+            ))}
           </div>
         </div>
         <div>

@@ -1,7 +1,7 @@
 import { getSession } from '@/lib/auth-client'
 import { headers } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
-import { Role } from '../../../../../prisma/out'
+import { Role } from '../../../../../dbOut'
 import db from '@/lib/db'
 
 export const POST = async (req: NextRequest) => {
@@ -61,7 +61,7 @@ export const DELETE = async (req: NextRequest) => {
 
     await db?.twEmbade.delete({
       where: {
-        id: parseInt(id)
+        id: parseInt(id),
       },
     })
 

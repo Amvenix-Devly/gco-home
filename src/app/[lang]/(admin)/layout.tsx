@@ -3,7 +3,7 @@ import { headers } from 'next/headers'
 import { ReactElement } from 'react'
 import { ClientLayout } from './client'
 import NoPermission from './NoPermission'
-import { Role } from '../../../../prisma/out'
+import { Role } from '../../../../dbOut'
 
 const AdminLayout = async ({ children }: { children: ReactElement }) => {
   const { data } = await getSession({
