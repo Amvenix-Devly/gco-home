@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { usePathname } from 'next/navigation'
+import { navigationData } from './Data'
 
 const MobileNav = () => {
   const [mobileNav, setMobileNav] = useState(false)
@@ -66,152 +67,39 @@ const MobileNav = () => {
                 </button>
               </div>
               <div className="flex mt-3 w-full flex-col gap-5 text-stone-300">
-                <MobileNavItem title="Home" path="/" />
-                <MobileNavItem path="#" title="About Us">
-                  <Child path="/about" title="Our Organization">
-                    <LinkItem path="/about#about" title="About GCO" />
-                    <LinkItem path="/about#mission" title="Mission vision" />
-                    <LinkItem path="/about#histry" title="History of GCO" />
-                  </Child>
-                  <Child path="/about/team" title="Our Team">
-                    <LinkItem
-                      path="/about/team#BOARD OF DIRECTOR"
-                      title="Board Of Director"
-                    />
-                    <LinkItem
-                      path="/about/team#EXECUTIVE MEMBER"
-                      title="Executive Member"
-                    />
-                    <LinkItem
-                      path="/about/team#ADVISER COUNCIL"
-                      title="Adviser Council"
-                    />
-                    <LinkItem path="/about/team#GCO STAFF" title="Gco Staff" />
-                    <LinkItem
-                      path="/about/team#TYAGI EXECUTIVE"
-                      title="Tyagi Executive"
-                    />
-                  </Child>
-                  <Child path="/about/strength" title="our strength">
-                    <LinkItem
-                      path="/about/strength#tyagiVolunteer"
-                      title="Tyagi volunteer"
-                    />
-                    <LinkItem
-                      path="/about/strength#tyagiFoundation"
-                      title="Tyagi foundation"
-                    />
-                    <LinkItem
-                      path="/about/strength#tyagiResearchCenter"
-                      title="Tyagi research center"
-                    />
-                    <LinkItem
-                      path="/about/strength#tyagiEnterprise"
-                      title="Tyagi enterprise"
-                    />
-                    <LinkItem
-                      path="/about/strength/globalNation"
-                      title="global nation"
-                    />
-                    <LinkItem
-                      path="/about/strength#gcoNursery"
-                      title="GCO Nursery"
-                    />
-                    <LinkItem
-                      path="/about/strength#treelanching"
-                      title="treelanching"
-                    />
-                  </Child>
-                  <Child path="#" title="Our Impact">
-                    <LinkItem
-                      path="/api/report2023"
-                      title="annual report 2023"
-                    />
-                  </Child>
-                </MobileNavItem>
-                <MobileNavItem title="GCO Wing">
-                  <Child path="/about" title="Our Organization">
-                    <LinkItem path="/about/videos" title="Vidios" />
-                    <LinkItem path="/about/photo-gallery" title="Gallary" />
-                  </Child>
-
-                  <ImageBox
-                    linkTitle="Visit our Newsroom"
-                    title="Stay up to date on major announcements, exciting collaborations, and more."
-                    src="https://onetreeplanted.org/cdn/shop/files/newsroom-promo_5000x.jpg?v=1690489113"
-                  />
-                  <ImageBox
-                    linkTitle="Learn More"
-                    title="We make it simple for anyone to plant trees, and together we can make an incredible impact. "
-                    src="https://onetreeplanted.org/cdn/shop/files/Our_Vision-megamenu_images_4500x.webp?v=1674767633"
-                  />
-                </MobileNavItem>
-                <MobileNavItem title="Get involbed">
-                  <Child path="#" title="Businesses">
-                    <LinkItem path="#" title="Become A Partner" />
-                    <LinkItem path="#" title="Partners" />
-                    <LinkItem path="#" title="Cryptocurrency" />
-                    <LinkItem path="#" title="Sports Sustainability" />
-                  </Child>
-                  <Child path="#" title="Individuals">
-                    <LinkItem path="#" title="Monthly Giving" />
-                    <LinkItem path="#" title="Planned Giving" />
-                    <LinkItem path="#" title="Become A Tree Ambassador" />
-                    <LinkItem path="#" title="Teachers & Parents" />
-                  </Child>
-                  <ImageBox
-                    linkTitle="Learn More"
-                    title="Become a business partner to improve your company’s sustainability initiatives and make an impact. "
-                    src="https://onetreeplanted.org/cdn/shop/files/Business_Sustainability-megamenu_images_4500x.webp?v=1674767903"
-                  />
-                  <ImageBox
-                    linkTitle="Learn More"
-                    title="See how your support and leadership can help us fund reforestation efforts across the globe. "
-                    src="https://onetreeplanted.org/cdn/shop/files/philanthropic-giving_4500x.jpg?v=1689881074"
-                  />
-                </MobileNavItem>
-                <MobileNavItem title="What we do">
-                  <Child path="#" title="">
-                    <LinkItem path="#" title="Global Nation" />
-                    <LinkItem path="#" title="OT4OC" />
-                    <LinkItem path="#" title="TYAGI" />
-                    <LinkItem path="#" title="ABALAMBAN" />
-                    <LinkItem path="#" title="Tree lanching" />
-                    <LinkItem path="#" title="skill development Program" />
-                  </Child>
-
-                  <ImageBox
-                    linkTitle="Learn More"
-                    title="Read about stories from the field, interesting facts about trees and get your healthy dose of nature. "
-                    src="https://onetreeplanted.org/cdn/shop/files/Our-Blog-megamenu-images_4000x.webp?v=1676321660"
-                  />
-                  <ImageBox
-                    linkTitle="Learn More"
-                    title="Comprised of lesson plans, learning modules, resources, and activities, our T.R.E.E.S. School Program is the perfect addition to your curriculum. "
-                    src="https://onetreeplanted.org/cdn/shop/files/EE_megamenu_images_4500x.webp?v=1674843679"
-                  />
-                </MobileNavItem>
-                <MobileNavItem title="Where we do">
-                  {/* <Child path="#" title="By Collection"> */}
-                  <LinkItem path="#" title="Bangladesh" />
-                  <LinkItem path="#" title="Zimbabwe" />
-                  <LinkItem path="#" title="Uganda" />
-                  {/* </Child> */}
-                  <ImageBox
-                    linkTitle="Shop now"
-                    title="Our fan-favorite Reforestation T-Shirt. Wear it with pride to show your support of reforesting our planet, one tree at a time. "
-                    src="https://onetreeplanted.org/cdn/shop/files/Mega_Menu_Image_2_1_a5088b7a-fa61-4d0b-9c6a-8a32dfb8adfd_4500x.jpg?v=1699972315"
-                  />
-                  <ImageBox
-                    linkTitle="Gift a tree"
-                    title="Give the gift that lasts a lifetime! Choose an image, write your personalized message and select a delivery date to gift a tree. "
-                    src="https://onetreeplanted.org/cdn/shop/files/gift-trees-mega-menu_2x_cb75d577-44b5-4b97-9796-04c5f4d3a921_2500x.jpg?v=1681420564"
-                  />
-                </MobileNavItem>
+                {navigationData.map((item, index) => (
+                  <MobileNavItem key={index} title={item.title} path={item.path}>
+                    {item.submenu?.map((submenu, subIndex) => (
+                      <Child 
+                        key={subIndex} 
+                        title={submenu.title} 
+                        path={submenu.path}
+                      >
+                        {submenu.items?.map((subItem, itemIndex) => (
+                          'src' in subItem ? (
+                            <ImageBox
+                              key={itemIndex}
+                              title={subItem.title}
+                              src={subItem.src}
+                              path={subItem.path}
+                              linkTitle={subItem.linkTitle}
+                            />
+                          ) : (
+                            <LinkItem
+                              key={itemIndex}
+                              title={subItem.title}
+                              path={subItem.path}
+                            />
+                          )
+                        ))}
+                      </Child>
+                    ))}
+                  </MobileNavItem>
+                ))}
                 <LinkIndItem title="Contact" path="#" />
-                <LinkIndItem title="Login" path="#" />
+                <LinkIndItem title="Login" path="/join" />
                 <LinkIndItem title="018-2487-8880" path="#" />
-                <LinkIndItem title="Newsleter" path="#" />
+                <LinkIndItem title="Newsleter" path="/newsletter" />
               </div>
             </div>
           </motion.div>
