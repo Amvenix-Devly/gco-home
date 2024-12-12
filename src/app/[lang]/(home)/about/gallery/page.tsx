@@ -1,5 +1,5 @@
 'use client'
-import allListImage from '@/img/listImage/listImage'
+import allListImage from '@/img/mightbe_deleted_Old-imageGallary/listImage'
 import { cn } from '@/lib/utils'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import Image, { StaticImageData } from 'next/image'
