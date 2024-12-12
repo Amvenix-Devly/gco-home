@@ -7,6 +7,8 @@ Rename update
       - 4 . Gallery
       - 5 . Video
 
+
+//done
 Update 
  - gco winning - gallary -> Show post image  post Categorys as like Sidebar
  - donation page youtobe vidio change

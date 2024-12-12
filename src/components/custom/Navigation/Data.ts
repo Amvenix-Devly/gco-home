@@ -32,9 +32,18 @@ export const navigationData = [
         path: '/about/strength',
         items: [
           { title: 'Tyagi volunteer', path: '/about/strength#tyagiVolunteer' },
-          { title: 'Tyagi foundation', path: '/about/strength#tyagiFoundation' },
-          { title: 'Tyagi research center', path: '/about/strength#tyagiResearchCenter' },
-          { title: 'Tyagi enterprise', path: '/about/strength#tyagiEnterprise' },
+          {
+            title: 'Tyagi foundation',
+            path: '/about/strength#tyagiFoundation',
+          },
+          {
+            title: 'Tyagi research center',
+            path: '/about/strength#tyagiResearchCenter',
+          },
+          {
+            title: 'Tyagi enterprise',
+            path: '/about/strength#tyagiEnterprise',
+          },
           { title: 'Global nation', path: '/about/strength/globalNation' },
           { title: 'GCO Nursery', path: '/about/strength#gcoNursery' },
           { title: 'treelanching', path: '/about/strength#treelanching' },
@@ -43,9 +52,7 @@ export const navigationData = [
       {
         title: 'Our Impact',
         path: '#',
-        items: [
-          { title: 'Annual report 2023', path: '/api/report2023' },
-        ],
+        items: [{ title: 'Annual report 2023', path: '/api/report2023' }],
       },
     ],
   },
@@ -55,8 +62,11 @@ export const navigationData = [
     submenu: [
       {
         title: 'NEWS & STORIES',
-        path: '/about',
+        path: '#',
         items: [
+          { title: 'Social media', path: '#' },
+          { title: 'News', path: '#' },
+          { title: 'Sories', path: '#' },
           { title: 'Vidios', path: '/about/videos' },
           { title: 'Gallary', path: '/about/photo-gallery' },
         ],
@@ -65,13 +75,15 @@ export const navigationData = [
         title: 'Image Boxes',
         items: [
           {
-            title: 'Stay up to date on major announcements, exciting collaborations, and more.',
+            title:
+              'Stay up to date on major announcements, exciting collaborations, and more.',
             src: 'https://onetreeplanted.org/cdn/shop/files/newsroom-promo_5000x.jpg?v=1690489113',
             linkTitle: 'Visit our Newsroom',
             path: '#',
           },
           {
-            title: 'We make it simple for anyone to plant trees, and together we can make an incredible impact.',
+            title:
+              'We make it simple for anyone to plant trees, and together we can make an incredible impact.',
             src: 'https://onetreeplanted.org/cdn/shop/files/Our_Vision-megamenu_images_4500x.webp?v=1674767633',
             linkTitle: 'Learn More',
             path: '#',
@@ -108,13 +120,15 @@ export const navigationData = [
         title: 'Image Boxes',
         items: [
           {
-            title: 'Become a business partner to improve your company’s sustainability initiatives and make an impact.',
+            title:
+              'Become a business partner to improve your company’s sustainability initiatives and make an impact.',
             src: 'https://onetreeplanted.org/cdn/shop/files/Business_Sustainability-megamenu_images_4500x.webp?v=1674767903',
             linkTitle: 'Learn More',
             path: '#',
           },
           {
-            title: 'See how your support and leadership can help us fund reforestation efforts across the globe.',
+            title:
+              'See how your support and leadership can help us fund reforestation efforts across the globe.',
             src: 'https://onetreeplanted.org/cdn/shop/files/philanthropic-giving_4500x.jpg?v=1689881074',
             linkTitle: 'Learn More',
             path: '#',
@@ -132,24 +146,42 @@ export const navigationData = [
         path: '/what-we-do',
         items: [
           { title: 'One tree for one child', path: '/what-we-do' },
-          { title: 'Save life from thunderstorms with plants', path: '/what-we-do' },
-          { title: 'Sponsor a tree for future child in Bangladesh', path: '/what-we-do' },
-          { title: 'Disaster Resilience and Relief Programs', path: '/what-we-do' },
+          {
+            title: 'Save life from thunderstorms with plants',
+            path: '/what-we-do',
+          },
+          {
+            title: 'Sponsor a tree for future child in Bangladesh',
+            path: '/what-we-do',
+          },
+          {
+            title: 'Disaster Resilience and Relief Programs',
+            path: '/what-we-do',
+          },
         ],
       },
       {
         title: 'Health',
         path: '/what-we-do',
         items: [
-          { title: 'Maternal and Child Health in Bangladesh Slums', path: '/what-we-do' },
-          { title: 'Maternal & Child Nutrition in Char Land, Bangladesh', path: '/what-we-do' },
+          {
+            title: 'Maternal and Child Health in Bangladesh Slums',
+            path: '/what-we-do',
+          },
+          {
+            title: 'Maternal & Child Nutrition in Char Land, Bangladesh',
+            path: '/what-we-do',
+          },
         ],
       },
       {
         title: 'Food Security',
         path: '/what-we-do',
         items: [
-          { title: "Addressing Hunger Among Bangladesh's Elderly", path: '/what-we-do' },
+          {
+            title: "Addressing Hunger Among Bangladesh's Elderly",
+            path: '/what-we-do',
+          },
           { title: 'Abalamban – Self-Reliance', path: '/what-we-do' },
           { title: 'Cluster Village Program', path: '/what-we-do' },
         ],
@@ -157,32 +189,35 @@ export const navigationData = [
       {
         title: 'Human Rights',
         path: '/what-we-do',
-        items: [
-          { title: 'Skill development program', path: '/what-we-do' },
-        ],
+        items: [{ title: 'Skill development program', path: '/what-we-do' }],
       },
       {
         title: 'Our Events',
         path: '/what-we-do',
-        items: [
-          { title: 'Skill development program', path: '/what-we-do' },
-        ],
+        items: [{ title: 'Skill development program', path: '/what-we-do' }],
       },
       {
         title: 'Campaigns',
         path: '/what-we-do',
         items: [
-          { title: 'Nutrition and Health Awareness Campaigns', path: '/what-we-do' },
-          { title: 'Hygiene and Sanitation Awareness Campaigns', path: '/what-we-do' },
-          { title: 'Mobile Campaigns for Health, Hygiene, and Social Awareness', path: '/what-we-do' },
+          {
+            title: 'Nutrition and Health Awareness Campaigns',
+            path: '/what-we-do',
+          },
+          {
+            title: 'Hygiene and Sanitation Awareness Campaigns',
+            path: '/what-we-do',
+          },
+          {
+            title: 'Mobile Campaigns for Health, Hygiene, and Social Awareness',
+            path: '/what-we-do',
+          },
         ],
       },
       {
         title: 'Training',
         path: '/what-we-do',
-        items: [
-          { title: 'ICT training program', path: '/what-we-do' },
-        ],
+        items: [{ title: 'ICT training program', path: '/what-we-do' }],
       },
     ],
   },
@@ -203,13 +238,15 @@ export const navigationData = [
         title: 'Image Boxes',
         items: [
           {
-            title: 'Our fan-favorite Reforestation T-Shirt. Wear it with pride to show your support of reforesting our planet, one tree at a time.',
+            title:
+              'Our fan-favorite Reforestation T-Shirt. Wear it with pride to show your support of reforesting our planet, one tree at a time.',
             src: 'https://onetreeplanted.org/cdn/shop/files/Mega_Menu_Image_2_1_a5088b7a-fa61-4d0b-9c6a-8a32dfb8adfd_4500x.jpg?v=1699972315',
             linkTitle: 'Shop now',
             path: '#',
           },
           {
-            title: 'Give the gift that lasts a lifetime! Choose an image, write your personalized message and select a delivery date to gift a tree.',
+            title:
+              'Give the gift that lasts a lifetime! Choose an image, write your personalized message and select a delivery date to gift a tree.',
             src: 'https://onetreeplanted.org/cdn/shop/files/gift-trees-mega-menu_2x_cb75d577-44b5-4b97-9796-04c5f4d3a921_2500x.jpg?v=1681420564',
             linkTitle: 'Gift a tree',
             path: '#',
