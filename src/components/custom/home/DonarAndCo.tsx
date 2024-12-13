@@ -1,7 +1,5 @@
 'use client'
 
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 import image1 from '@/img/donor/Bangladesh-Forestry-Ministry.png'
 import image2 from '@/img/donor/Bondhu-Nursery-logo-1024x1024.png'
@@ -14,16 +12,24 @@ import image8 from '@/img/donor/microsoft-logo.jpg'
 import image9 from '@/img/donor/nsbd.jpeg'
 import Image from 'next/image'
 import '@/styles/donar.css'
-import BlurIn from '@/components/ui/aimate/blur-in'
 
-
-const images = [image1, image2, image3, image4, image5, image6, image7, image8, image9]
+const images = [
+  image1,
+  image2,
+  image3,
+  image4,
+  image5,
+  image6,
+  image7,
+  image8,
+  image9,
+]
 
 const SlideItem = ({ src }: any) => {
   return (
     <div className="size-40 rounded-md overflow-hidden mx-auto">
       <Image
-        className="h-full w-full object-contain rounded-md bg-white"
+        className="size-28 object-contain rounded-md bg-white"
         src={src}
         alt="logos"
       />
@@ -48,7 +54,8 @@ const DonarAndCo = () => {
         settings: {
           slidesToShow: 7,
         },
-      },{
+      },
+      {
         breakpoint: 800,
         settings: {
           slidesToShow: 5,
@@ -69,11 +76,13 @@ const DonarAndCo = () => {
     ],
   }
   return (
-    <section className="container my-20">
-      <BlurIn className="text-center !text-2xl font-semibold md:!text-3xl" word='Donor & Collaborators'/>
-  
-      <div className='mt-10 mx-0 md:mx-0 xl:mx-0'>
-        <Slider {...settings} className='' >
+    <section className="container my-10">
+      <h1 className="text-center !text-2xl font-semibold md:!text-3xl">
+        Donor & Collaborators
+      </h1>
+
+      <div className="mt-10 mx-0 md:mx-0 xl:mx-0">
+        <Slider {...settings} className="">
           {images.map((img, index) => (
             <SlideItem key={index} src={img} />
           ))}

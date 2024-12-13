@@ -1,8 +1,7 @@
 'use client'
 import { Aperture, Boxes, CircuitBoard, Crown, Trees } from 'lucide-react'
 import Slider, { Settings } from 'react-slick'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
+
 
 var settings = {
   dots: false,

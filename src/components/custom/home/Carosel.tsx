@@ -5,21 +5,11 @@ import img3 from '@/img/carosel/cur2.jpg'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { useState } from 'react'
-import 'slick-carousel/slick/slick-theme.css'
-import 'slick-carousel/slick/slick.css'
+import Slider from 'react-slick'
 
-const Slider = dynamic(() => import('react-slick'), { ssr: false })
 
-const typs = [
-  'fadeIn',
-  'fadeInUp',
-  'popIn',
-  'shiftInUp',
-  'rollIn',
-  'whipIn',
-  'whipInUp',
-  'calmInUp',
-]
+// const Slider = dynamic(() => import('react-slick'), { ssr: false })
+
 
 const SlideItem = ({ src, inview, text }: any) => {
   return (
@@ -58,7 +48,6 @@ function SimpleSlider() {
   return (
     <div className="slider-container container !p-0">
       <Slider {...settings} afterChange={(x) => setCurrentPos(x)}>
-        {/* <SlideItem src={img1} inview={currentPos === 0} /> */}
         <SlideItem
           src={img2}
           inview={currentPos === 0}

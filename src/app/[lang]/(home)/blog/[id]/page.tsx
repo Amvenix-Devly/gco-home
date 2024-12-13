@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { unstable_after } from 'next/server'
+import { after } from 'next/server'
 import ReactMarkdown from 'react-markdown'
 import db from '@/lib/db'
 const getBlog = async (id: string) =>
@@ -51,7 +51,7 @@ const ItemBlogPage = async ({ params }: any) => {
   const blog = await getBlog(id)
   if (!blog) return notFound()
   const related = await relatedPosts(blog.category.id, id)
-  unstable_after(async () => {
+  after(async () => {
     await db?.blogPost.update({
       where: { id: id },
       data: {

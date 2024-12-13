@@ -1,14 +1,42 @@
 import BlogSection from '@/components/custom/home/BlogSection'
 import Carosel from '@/components/custom/home/Carosel'
 import ChildAbouse from '@/components/custom/home/ChildAbouse'
-import Donate from '@/components/custom/home/Donate'
+import DonarAndCo from '@/components/custom/home/DonarAndCo'
 import Instagram from '@/components/custom/home/Instagram'
 import MiniWOrdlMap from '@/components/custom/home/MiniWOrdlMap'
 import OurJob from '@/components/custom/home/OurJob'
 import OurProgram from '@/components/custom/home/OurProgram'
 import { PlantTrees } from '@/components/custom/home/PlantTrees'
 import ProgramOverview from '@/components/custom/home/programs-overview'
+import SixItems from '@/components/custom/home/SixItems'
 import db from '@/lib/db'
+
+
+
+const HomePage = async () => {
+  const mostViewedBlog = await mostViewBlog()
+  const listBlog = await blogs(mostViewedBlog?.id)
+  const listFbPost = await getAllFbPost()
+  const listXPost = await getAllXPost()
+  return (
+    <>
+      <div className="md:h-[550px]">
+        <Carosel />
+      </div>
+      {/* <OurJob /> */}
+      {/* <SixItems /> */}
+      <OurProgram />
+      <PlantTrees />
+      {/* <ProgramOverview /> */}
+      <BlogSection mostViewedBlog={mostViewedBlog} listBlog={listBlog} />
+      <MiniWOrdlMap />
+      <ChildAbouse />
+      {/* <Donate /> */}
+      <DonarAndCo />
+      <Instagram fb={listFbPost} x={listXPost} />
+    </>
+  )
+}
 
 const mostViewBlog = async () =>
   db.blogPost.findFirst({
@@ -60,7 +88,8 @@ const getAllFbPost = async () =>
     },
   })
 
-  const getAllXPost = async () => await db?.twEmbade.findMany({
+const getAllXPost = async () =>
+  await db?.twEmbade.findMany({
     take: 8,
     orderBy: {
       createdAt: 'desc',
@@ -70,28 +99,5 @@ const getAllFbPost = async () =>
       id: true,
     },
   })
-
-const HomePage = async () => {
-  const mostViewedBlog = await mostViewBlog()
-  const listBlog = await blogs(mostViewedBlog?.id)
-  const listFbPost = await getAllFbPost()
-  const listXPost = await getAllXPost()
-  return (
-    <>
-      <div className="md:h-[550px]">
-        <Carosel />
-      </div>
-      <OurJob />
-      <OurProgram />
-      <PlantTrees />
-      <ProgramOverview />
-      <BlogSection mostViewedBlog={mostViewedBlog} listBlog={listBlog} />
-      <MiniWOrdlMap />
-      <ChildAbouse />
-      <Donate />
-      <Instagram fb={listFbPost} x={listXPost} />
-    </>
-  )
-}
 
 export default HomePage

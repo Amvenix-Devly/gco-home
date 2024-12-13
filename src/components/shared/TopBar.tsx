@@ -20,7 +20,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 const TopBar = () => {
-  const { data } = useSession()
+  const { data } = useSession() as any
   const user = data?.user
   const {refresh} = useRouter()
   const hendelLogout = async () => {
@@ -56,7 +56,7 @@ const TopBar = () => {
         </div>
         <div className="flex gap-3 items-center text-white uppercase text-sm">
           <Link
-            href="#"
+            href="/donation"
             className="bg-white  text-bgMain h-10 px-3 flex items-center hover:bg-bgMain hover:text-white"
           >
             Donate

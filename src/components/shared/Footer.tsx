@@ -1,3 +1,4 @@
+import { Facebook, Instagram, Linkedin, Mail, X, Youtube } from 'lucide-react'
 import Link from 'next/link'
 import {
   Accordion,
@@ -6,16 +7,6 @@ import {
   AccordionTrigger,
 } from '../ui/accordion'
 import Logo from './Logo'
-import {
-  Facebook,
-  Instagram,
-  Linkedin,
-  Mail,
-  ShoppingBag,
-  User,
-  X,
-  Youtube,
-} from 'lucide-react'
 
 /* eslint-disable @next/next/no-img-element */
 const Footer = () => {
@@ -27,6 +18,13 @@ const Footer = () => {
     </section>
   )
 }
+
+const AuthorizedImages = ['/img/footer/auth1.webp', '/img/footer/auth2.webp']
+const VettedBYImages = ['/img/footer/vett.png', '/img/footer/vett2.png']
+const PlantingPartnerImages = [
+  '/img/footer/plan1.webp',
+  '/img/footer/plan2.jpg',
+]
 
 const MobileFooter = () => {
   return (
@@ -41,16 +39,14 @@ const MobileFooter = () => {
               <h1 className="uppercase text-lg">Authorized BY</h1>
             </div>
             <div className="flex gap-3">
-              <img
-                className="w-[100px] rounded-md aspect-square object-cover"
-                src="https://globalcommunityorganization.org/wp-content/uploads/2023/02/NGO-Affairs-Bureau-1.png"
-                alt="gvt"
-              />
-              <img
-                className="w-[100px] rounded-md aspect-square object-cover"
-                src="https://globalcommunityorganization.org/wp-content/uploads/2023/02/Social-Service-logo.jpg"
-                alt="gct2"
-              />
+              {AuthorizedImages.map((img, i) => (
+                <img
+                  key={i}
+                  className="w-[80px] rounded-md aspect-square object-cover"
+                  src={img}
+                  alt="gvt"
+                />
+              ))}
             </div>
           </div>
           <div className="flex flex-col justify-center w-full items-center gap-4 mt-5">
@@ -58,16 +54,14 @@ const MobileFooter = () => {
               <h1 className="uppercase text-lg">Vetted BY</h1>
             </div>
             <div className="flex gap-3">
-              <img
-                className="w-[100px] rounded-md aspect-square object-cover"
-                src="https://globalcommunityorganization.org/wp-content/uploads/2023/10/2024_Pathway-Vetted-Badge-768x710.png"
-                alt="gvt"
-              />
-              <img
-                className="w-[100px] rounded-md aspect-square object-cover"
-                src="https://globalcommunityorganization.org/wp-content/uploads/2023/10/European_Commission.svg.png"
-                alt="gct2"
-              />
+              {VettedBYImages.map((img, i) => (
+                <img
+                  key={i}
+                  className="w-[80px] rounded-md aspect-square object-cover"
+                  src={img}
+                  alt="vetted"
+                />
+              ))}
             </div>
           </div>
           <div className="flex flex-col justify-center w-full items-center gap-4 mt-5">
@@ -75,16 +69,14 @@ const MobileFooter = () => {
               <h1 className="uppercase text-lg">Planting Partner</h1>
             </div>
             <div className="flex gap-3">
-              <img
-                className="w-[100px] rounded-md aspect-square object-cover"
-                src="https://globalcommunityorganization.org/wp-content/uploads/elementor/thumbs/OTP-e1704813735137-qi2983g0nym3xzxqm7zf7d6mwv4sidl9oirdxl1b9y.webp"
-                alt="gvt"
-              />
-              <img
-                className="w-[100px] rounded-md aspect-square object-cover"
-                src="https://globalcommunityorganization.org/wp-content/uploads/2023/12/GN-Logo-JPEG.jpg"
-                alt="gct2"
-              />
+              {PlantingPartnerImages.map((img, i) => (
+                <img
+                  key={i}
+                  className="w-[80px] rounded-md aspect-square object-cover"
+                  src={img}
+                  alt="planting"
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -210,16 +202,14 @@ const DesktopFooter = () => {
                 </h1>
               </div>
               <div className="flex gap-3">
-                <img
-                  className="w-[80px] rounded-md aspect-square object-cover"
-                  src="https://globalcommunityorganization.org/wp-content/uploads/2023/02/NGO-Affairs-Bureau-1.png"
-                  alt="gvt"
-                />
-                <img
-                  className="w-[80px] rounded-md aspect-square object-cover"
-                  src="https://globalcommunityorganization.org/wp-content/uploads/2023/02/Social-Service-logo.jpg"
-                  alt="gct2"
-                />
+                {AuthorizedImages.map((img, i) => (
+                  <img
+                    key={i}
+                    className="w-[80px] rounded-md aspect-square object-cover"
+                    src={img}
+                    alt="gvt"
+                  />
+                ))}
               </div>
             </div>
 
@@ -228,16 +218,14 @@ const DesktopFooter = () => {
                 <h1 className="uppercase text-base font-semibold">Vetted BY</h1>
               </div>
               <div className="flex gap-3">
-                <img
-                  className="w-[80px] rounded-md aspect-square object-cover"
-                  src="https://globalcommunityorganization.org/wp-content/uploads/2023/10/2024_Pathway-Vetted-Badge-768x710.png"
-                  alt="gvt"
-                />
-                <img
-                  className="w-[80px] rounded-md aspect-square object-cover"
-                  src="https://globalcommunityorganization.org/wp-content/uploads/2023/10/European_Commission.svg.png"
-                  alt="gct2"
-                />
+                {VettedBYImages.map((img, i) => (
+                  <img
+                    key={i}
+                    className="w-[80px] rounded-md aspect-square object-cover"
+                    src={img}
+                    alt="vetted"
+                  />
+                ))}
               </div>
             </div>
           </div>
@@ -249,16 +237,14 @@ const DesktopFooter = () => {
                 </h1>
               </div>
               <div className="flex gap-3">
-                <img
-                  className="w-[80px] rounded-md aspect-square object-cover"
-                  src="https://globalcommunityorganization.org/wp-content/uploads/elementor/thumbs/OTP-e1704813735137-qi2983g0nym3xzxqm7zf7d6mwv4sidl9oirdxl1b9y.webp"
-                  alt="gvt"
-                />
-                <img
-                  className="w-[80px] rounded-md aspect-square object-cover"
-                  src="https://globalcommunityorganization.org/wp-content/uploads/2023/12/GN-Logo-JPEG.jpg"
-                  alt="gct2"
-                />
+                {PlantingPartnerImages.map((img, i) => (
+                  <img
+                    key={i}
+                    className="w-[80px] rounded-md aspect-square object-cover"
+                    src={img}
+                    alt="planting"
+                  />
+                ))}
               </div>
             </div>
             <div className="flex flex-col gap-1 mt-5">
@@ -272,7 +258,9 @@ const DesktopFooter = () => {
           </div>
           <div className="w-[calc(20%-10px)]">
             <div>
-              <h1 className="mt-5 mb-3 text-lg font-semibold uppercase">Contract US</h1>
+              <h1 className="mt-5 mb-3 text-lg font-semibold uppercase">
+                Contract US
+              </h1>
               <p>
                 Global Community Organization South Milik Bagha Bagha-6280,
                 Bagha, Rajshahi, Bangladesh
@@ -286,17 +274,26 @@ const DesktopFooter = () => {
               <a href="#">
                 <Mail />
               </a>
-              <a href="https://www.facebook.com/GlobalCommunityOrganization" target='_new'>
+              <a
+                href="https://www.facebook.com/GlobalCommunityOrganization"
+                target="_new"
+              >
                 <Facebook />
               </a>
-              <a href="https://x.com/Global_Com_Org" target='_new'>
+              <a href="https://x.com/Global_Com_Org" target="_new">
                 <X />
               </a>
 
-              <a href="https://www.youtube.com/@globalcommunityorganization" target='_new'>
+              <a
+                href="https://www.youtube.com/@globalcommunityorganization"
+                target="_new"
+              >
                 <Youtube />
               </a>
-              <a href="https://www.linkedin.com/in/global-community-organization-4428951a6/" target='_new'>
+              <a
+                href="https://www.linkedin.com/in/global-community-organization-4428951a6/"
+                target="_new"
+              >
                 <Linkedin />
               </a>
             </div>
@@ -347,7 +344,7 @@ const BootomBar = () => {
   return (
     <div className="container flex justify-around items-center  flex-col-reverse lg:flex-row py-5 gap-3 lg:gap-0">
       <p>©2023 GCO all rights are reserved.</p>
-      <img className='object-cover h-10' src="/payment.png" alt="payment" />
+      <img className="object-cover h-10" src="/payment.png" alt="payment" />
     </div>
   )
 }

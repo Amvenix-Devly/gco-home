@@ -1,5 +1,6 @@
 'use client'
 
+import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import SiteButton from '@/components/ui/SiteButton'
 
@@ -28,8 +29,8 @@ const BlogSection = ({
 }) => {
   const { push } = useRouter()
   return (
-    <section className="w-full relative overflow-hidden border-b border-zinc-600 border-t">
-      <div className="container px-10 pt-12">
+    <section className="w-full relative overflow-hidden">
+      <div className="container px-10 pt-5">
         <div className="mt-10">
           <h1 className="!text-2xl font-semibold md:!text-3xl !pt-10 !text-start">
             News and Blogs
@@ -58,10 +59,10 @@ const BlogSection = ({
           </ScrollArea>
         </div>
       </div>
-      <div className="flex justify-center pb-5 mt-5">
-        <SiteButton onClick={() => push('/blog')} className="px-6">
+      <div className="flex justify-center pb-5 mt-10">
+        <Button variant='outline' onClick={() => push('/blog')} className="px-6 rounded-none">
           View all
-        </SiteButton>
+        </Button>
       </div>
     </section>
   )
