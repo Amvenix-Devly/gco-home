@@ -4,14 +4,9 @@ import ChildAbouse from '@/components/custom/home/ChildAbouse'
 import DonarAndCo from '@/components/custom/home/DonarAndCo'
 import Instagram from '@/components/custom/home/Instagram'
 import MiniWOrdlMap from '@/components/custom/home/MiniWOrdlMap'
-import OurJob from '@/components/custom/home/OurJob'
 import OurProgram from '@/components/custom/home/OurProgram'
 import { PlantTrees } from '@/components/custom/home/PlantTrees'
-import ProgramOverview from '@/components/custom/home/programs-overview'
-import SixItems from '@/components/custom/home/SixItems'
 import db from '@/lib/db'
-
-
 
 const HomePage = async () => {
   const mostViewedBlog = await mostViewBlog()

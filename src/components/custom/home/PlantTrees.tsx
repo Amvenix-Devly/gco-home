@@ -13,8 +13,7 @@ const works = [
   {
     title: 'TreeLanching',
     content: 'Grow Green, Empower Lives, Sustain Earth!',
-    image:
-      '/img/treelanching.jpg',
+    image: '/img/treelanching.jpg',
   },
   {
     title: 'One Tree for One Student',
@@ -118,6 +117,8 @@ const Item = ({
   return (
     <motion.div
       whileHover={'hover'}
+      whileFocus={'hover'}
+      whileDrag={'hover'}
       className="aspect-square h-[340px]  rounded-sm group flex justify-center items-center flex-col relative  overflow-hidden"
     >
       <motion.h1

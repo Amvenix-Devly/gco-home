@@ -14,21 +14,21 @@ import {
 } from '@/components/ui/Credenza'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 import { cn } from '@/lib/utils'
 import '@uiw/react-markdown-preview/markdown.css'
 import '@uiw/react-md-editor/markdown-editor.css'
 import { Plus, Trash2 } from 'lucide-react'
 import dynamic from 'next/dynamic'
-import { useRef, useState } from 'react'
-import {
-  Select,
-  SelectTrigger,
-  SelectContent,
-  SelectItem,
-  SelectValue,
-} from '@/components/ui/select'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { useRef, useState } from 'react'
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false })
 type Cat = {
@@ -37,7 +37,7 @@ type Cat = {
 }[]
 
 const AddBlog = ({ cat }: { cat: Cat }) => {
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(true)
   const inputImaeg = useRef<HTMLInputElement | null>(null)
   const [coverImage, setCoverImage] = useState<File | null>(null)
   const [value, setValue] = useState('Your blog post here....')
@@ -119,14 +119,14 @@ const AddBlog = ({ cat }: { cat: Cat }) => {
   }
 
   return (
-    <Credenza open={show} onOpenChange={setShow}>
+    <Credenza>
       <CredenzaTrigger asChild>
         <Button>
           <span className="hidden md:block">Add A Blog</span>
           <Plus className="size-5" />
         </Button>
       </CredenzaTrigger>
-      {show && (
+    
         <CredenzaContent className="md:max-w-[90vw]">
           <CredenzaHeader>
             <CredenzaTitle>Add blog</CredenzaTitle>
@@ -256,7 +256,7 @@ const AddBlog = ({ cat }: { cat: Cat }) => {
             </CredenzaClose>
           </CredenzaFooter>
         </CredenzaContent>
-      )}
+    
     </Credenza>
   )
 }

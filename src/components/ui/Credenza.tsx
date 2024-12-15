@@ -3,7 +3,7 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { useMediaQuery } from "@/hooks/useMediaQuery"
+import { useMediaQuery } from "@/hooks/useMediaQuery" 
 import {
   Dialog,
   DialogClose,
@@ -44,14 +44,6 @@ const desktop = "(min-width: 768px)"
 const Credenza = ({ children, ...props }: RootCredenzaProps) => {
   const isDesktop = useMediaQuery(desktop)
   const Credenza = isDesktop ? Dialog : Drawer
-
-  React.useEffect(() => {
-    if (props.open) {
-      document.body.style.overflowY = "hidden"
-    } else {
-      document.body.style.overflowY = "auto"
-    }
-  }, [props.open])
 
   return <Credenza {...props}>{children}</Credenza>
 }

@@ -1,9 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
-import { Card, CardContent } from '@/components/ui/card'
-import { Leaf, Home, BookOpen, Building2 } from 'lucide-react'
-import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
+import { motion } from 'framer-motion'
+import { BookOpen, Building2, Home, Leaf } from 'lucide-react'
 
 const programs = [
   {
@@ -40,16 +39,14 @@ const programs = [
 const Items = [
   {
     id: 1,
-    description:
-      'Protect the Planet, Act Now for Future Generations!',
+    description: 'Protect the Planet, Act Now for Future Generations!',
     title: 'Climate action',
     img: 'https://images.pexels.com/photos/60013/desert-drought-dehydrated-clay-soil-60013.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
   },
   {
     id: 2,
     img: 'https://img.freepik.com/free-vector/group-medical-staff-carrying-health-related-icons_53876-43071.jpg',
-    description:
-      'Grow Sustainably, Nourish Communities, Secure Our Future!',
+    description: 'Grow Sustainably, Nourish Communities, Secure Our Future!',
     title: 'Health',
   },
   {
@@ -62,8 +59,7 @@ const Items = [
   {
     id: 4,
     img: 'https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg',
-    description:
-      'Equal Rights, Every Voice, Justice for All Humanity!',
+    description: 'Equal Rights, Every Voice, Justice for All Humanity!',
     title: 'Human Rights',
   },
 ]
@@ -105,11 +101,15 @@ export default function OurProgram() {
           ))}
         </div> */}
 
-        <div className="flex mt-10">
+        <div className="flex mt-10 flex-wrap  items-center justify-center">
           {Items.map((item) => (
-            <div className="w-[25%] aspect-square" key={item.id}>
-              <div className='m-2 h-full'>
-              <Item content={item.description} img={item.img} title={item.title} />
+            <div key={item.id} className='size-[300px] sm:size-[50%] md:size-[25%]'>
+              <div className='m-5'>
+              <Item
+                content={item.description}
+                img={item.img}
+                title={item.title}
+              />
               </div>
             </div>
           ))}
@@ -158,7 +158,10 @@ const Item = ({
   return (
     <motion.div
       whileHover={'hover'}
-      className="size-full  rounded-sm group flex justify-center items-center flex-col relative  overflow-hidden"
+      whileFocus={'hover'}
+      whileDrag={'hover'}
+      
+      className="size-full aspect-square rounded-sm group flex justify-center items-center flex-col relative  overflow-hidden"
     >
       <motion.h1
         variants={AnimatH1}

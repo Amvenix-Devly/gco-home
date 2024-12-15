@@ -140,12 +140,6 @@ const data: TeamData = {
         .default,
     },
     {
-      name: 'RONI ISLAM',
-      position: 'ACCOUNTANT',
-      image: require('@/img/pagesImage/team/stafmember/Roni-photo-2.jpg')
-        .default,
-    },
-    {
       name: 'MD. MASUD RANA',
       position: 'PROJECT OFFICER',
       image: require('@/img/pagesImage/team/stafmember/mashud.jpg').default,
@@ -305,6 +299,7 @@ const ItemCard = ({ item }: any) => {
             height={200}
             width={200}
             className="rounded-full w-1/2"
+            placeholder='blur'
           />
         </div>
         <a

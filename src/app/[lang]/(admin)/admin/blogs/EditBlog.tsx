@@ -120,7 +120,7 @@ const EditBlog = ({ cat, blogId }: { cat: Cat; blogId: string | number }) => {
   return (
     <Credenza open={show} onOpenChange={setShow}>
       <CredenzaTrigger asChild>
-        <button>Edit</button>
+        <Button>Edit</Button>
       </CredenzaTrigger>
       {show && (
         <CredenzaContent className="md:max-w-[90vw]">

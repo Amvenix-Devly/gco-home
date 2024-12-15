@@ -40,7 +40,7 @@ const AdminBlogPage = async () => {
               <TableCell>{blog.category.name}</TableCell>
               <TableCell>{blog.published ? "Yes" : "No"}</TableCell>
               <TableCell>{blog.views}</TableCell>
-              <TableCell className='space-x-3'>
+              <TableCell className='flex gap-3'>
                 <EditBlog blogId={blog.id} cat={allcat} />
                 <DeleteBlog blogId={blog.id} />
               </TableCell>
