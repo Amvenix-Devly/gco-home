@@ -73,7 +73,7 @@ const blogs = async (mostId: string | undefined) =>
 
 const getAllFbPost = async () =>
   await db?.fbEmbade.findMany({
-    take: 8,
+    take: 4,
     orderBy: {
       createdAt: 'desc',
     },
@@ -85,7 +85,7 @@ const getAllFbPost = async () =>
 
 const getAllXPost = async () =>
   await db?.twEmbade.findMany({
-    take: 8,
+    take: 4,
     orderBy: {
       createdAt: 'desc',
     },
