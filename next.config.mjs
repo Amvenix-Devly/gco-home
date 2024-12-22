@@ -5,7 +5,6 @@ const nextConfig = {
   images: {
     remotePatterns: [
       { hostname: 'source.unsplash.com' },
-      { hostname: 'globalcommunityorganization.org' },
       { hostname: 'ik.imagekit.io' },
       { hostname: 'picsum.photos' },
     ],
@@ -19,19 +18,6 @@ const nextConfig = {
 
   distDir: 'build',
   crossOrigin: 'anonymous',
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'Access-Control-Allow-Origin',
-            value: '*',
-          },
-        ],
-      },
-    ]
-  },
 }
 
 export default nextConfig

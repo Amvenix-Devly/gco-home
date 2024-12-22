@@ -21,7 +21,7 @@ export const ClientLayout = ({ children }: { children: ReactNode }) => {
     >
       <div className="flex">
         <AdminSideBar toggled={toggled} setToggled={setToggled} />
-        <main className="w-full">
+        <main className="w-full h-[98vh] overflow-y-auto">
           <AdminNav toggled={toggled} setToggled={setToggled} />
           {children}
         </main>
