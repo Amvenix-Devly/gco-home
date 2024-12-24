@@ -58,18 +58,19 @@ const DesktopNav = () => {
 
             <NavItem title="Get Involved" path="#">
               <div className="flex gap-10 flex-wrap">
-                <NavListItem title="Businesses" path="#">
-                  <LinkItem title="Become A Partner" path="#" />
+                <NavListItem title="Businesses" path="/get-involved/business">
+                  {/* <LinkItem title="Become A Partner" path="#" />
                   <LinkItem title="Partners" path="#" />
                   <LinkItem title="Cryptocurrency" path="#" />
-                  <LinkItem title="Sports Sustainability" path="#" />
+                  <LinkItem title="Sports Sustainability" path="#" /> */}
                 </NavListItem>
                 <NavListItem title="Individuals" path="#">
-                  <LinkItem title="Monthly Giving" path="#" />
+                  {/* <LinkItem title="Monthly Giving" path="#" />
                   <LinkItem title="Planned Giving" path="#" />
                   <LinkItem title="Become A Tree Ambassador" path="#" />
-                  <LinkItem title="Teachers & Parents" path="#" />
+                  <LinkItem title="Teachers & Parents" path="#" /> */}
                 </NavListItem>
+                <NavListItem title="Schools" path="/get-involved/schools"/>
               </div>
             </NavItem>
 

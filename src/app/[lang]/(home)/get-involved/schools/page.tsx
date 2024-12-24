@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { School, TreePine, Users } from 'lucide-react';
 import { FeaturesSection } from './client';
+import { Facebook, Twitter, Youtube, Mail } from 'lucide-react';
+import { Input } from '@/components/ui/input';
 
 const SchoolsPage = () => {
   return (
@@ -26,10 +28,23 @@ const SchoolsPage = () => {
             Join the Program
           </button>
         </div>
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-4">
+          {socialLinks.map((item, idx) => (
+            <a
+              key={idx}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors hover:text-green-500"
+            >
+              <item.icon className="w-6 h-6" />
+            </a>
+          ))}
+        </div>
       </section>
 
       {/* Impact Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-zinc-900">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Our Impact</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -63,6 +78,37 @@ const SchoolsPage = () => {
           </button>
         </div>
       </section>
+
+      {/* Subscribe Section */}
+      <section className="py-16 text-center">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-2">Get the Resources</h2>
+          <p className="text-lg font-light mb-8">Fill out the form to get access to the program!</p>
+          <form className="max-w-md mx-auto space-y-4">
+            <Input
+              type="text"
+              placeholder="Full Name"
+              className="w-full p-3 rounded border border-gray-300 focus:outline-none"
+            />
+            <Input
+              type="email"
+              placeholder="Email"
+              className="w-full p-3 rounded border border-gray-300 focus:outline-none"
+            />
+            <Input
+              type="text"
+              placeholder="School Name"
+              className="w-full p-3 rounded border border-gray-300 focus:outline-none"
+            />
+            <button
+              type="submit"
+              className="bg-green-600 text-white w-full py-3 rounded font-bold hover:bg-green-700 transition-colors"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </section>
     </main>
   );
 };
@@ -82,6 +128,25 @@ const impacts = [
     number: '50K+', 
     description: 'Students Engaged',
     icon: Users
+  },
+];
+
+const socialLinks = [
+  {
+    href: "mailto:hello@globalcommunityorganization.org",
+    icon: Mail,
+  },
+  {
+    href: "https://www.facebook.com/GlobalCommunityOrganization",
+    icon: Facebook,
+  },
+  {
+    href: "https://x.com/Global_Com_Org",
+    icon: Twitter,
+  },
+  {
+    href: "https://youtube.com/@globalcommunityorganization?si=4emJ0AAcpVYRhpkZ",
+    icon: Youtube,
   },
 ];
 

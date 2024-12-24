@@ -4,7 +4,7 @@ const nextConfig = {
   output: 'standalone',
   images: {
     remotePatterns: [
-      { hostname: 'source.unsplash.com' },
+      { hostname: '*.unsplash.com' },
       { hostname: 'ik.imagekit.io' },
       { hostname: 'picsum.photos' },
     ],
