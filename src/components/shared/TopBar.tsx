@@ -90,8 +90,7 @@ const TopBar = () => {
             )}
           </>
           <button
-            className="flex gap-1
-           items-center bg-white  text-bgMain hover:bg-bgMain hover:text-white h-10 px-2"
+            className="flex gap-1 items-center bg-white  text-bgMain hover:bg-bgMain hover:text-white h-10 px-2"
           >
             <ShoppingBag className="size-5" />0
           </button>

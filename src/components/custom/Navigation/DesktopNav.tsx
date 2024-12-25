@@ -64,7 +64,7 @@ const DesktopNav = () => {
                   <LinkItem title="Cryptocurrency" path="#" />
                   <LinkItem title="Sports Sustainability" path="#" /> */}
                 </NavListItem>
-                <NavListItem title="Individuals" path="#">
+                <NavListItem title="Individuals" path="/get-involved/individuals">
                   {/* <LinkItem title="Monthly Giving" path="#" />
                   <LinkItem title="Planned Giving" path="#" />
                   <LinkItem title="Become A Tree Ambassador" path="#" />
