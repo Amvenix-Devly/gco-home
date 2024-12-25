@@ -111,9 +111,9 @@ const MobileNav = () => {
                     </MobileNavItem>
                   )
                 })}
-                <LinkIndItem title="Contact" path="#" />
+                <LinkIndItem title="Contact" path="/contact-us" />
                 <LinkIndItem title="Login" path="/join" />
-                <LinkIndItem title="018-2487-8880" path="#" />
+                <LinkIndItem title="+8801760870070" path="#" />
                 <LinkIndItem title="Newsleter" path="/newsletter" />
               </div>
             </div>
