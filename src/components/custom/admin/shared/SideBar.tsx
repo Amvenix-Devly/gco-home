@@ -5,6 +5,7 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import { cn } from '@/lib/utils'
 import '@/styles/adminSideBar.css'
 import {
+  BarChartHorizontal,
   ChevronLeft,
   Facebook,
   Globe,
@@ -76,6 +77,15 @@ const AdminSideBar = ({ toggled, setToggled }: any) => {
               {!collapsed && 'Twitter Post'}
 
               <Twitter className="size-5" />
+            </SideBarLinkButton>
+            <SideBarLinkButton
+              setToggled={setToggled}
+              link="/admin/projects"
+              active={'/admin/projects' === path}
+            >
+              {!collapsed && 'Projects'}
+
+              <BarChartHorizontal className="size-5" />
             </SideBarLinkButton>
             <Button
               variant="outline"

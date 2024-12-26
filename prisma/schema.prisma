@@ -122,3 +122,23 @@ model TwEmbade {
   embedCode String   @db.LongText
   createdAt DateTime @default(now())
 }
+
+enum ProjectType {
+  COMPLATE_PROJECT
+  ON_GOING_PROJECT
+}
+
+model Project {
+  id              Int         @id @default(autoincrement())
+  title           String
+  fundedby        String
+  startTime       DateTime
+  endTime         String
+  projectDuration String
+  pertnershipWith String?
+  projectArea     String
+  note            String
+  projectType     ProjectType
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+}

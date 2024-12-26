@@ -2,14 +2,11 @@
 
 import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import SiteButton from '@/components/ui/SiteButton'
 
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import ReactMarkdown from 'react-markdown'
-
-
 
 type blogType = {
   title: string
@@ -60,7 +57,11 @@ const BlogSection = ({
         </div>
       </div>
       <div className="flex justify-center pb-5 mt-10">
-        <Button variant='outline' onClick={() => push('/blog')} className="px-6 rounded-none">
+        <Button
+          variant="outline"
+          onClick={() => push('/blog')}
+          className="px-6 rounded-none"
+        >
           View all
         </Button>
       </div>
@@ -94,10 +95,7 @@ const BigNews = ({
           alt={title}
         />
       </div>
-      <div
-        className="mt-5 flex flex-col gap-3 p-3
-      "
-      >
+      <div className="mt-5 flex flex-col gap-3 p-3">
         <Link
           href={`/blog/${id}`}
           className="text-2xl font-semibold relative after:absolute after:left-0 w-fit  after:bg-primary after:bottom-1 after:h-[1px] after:w-full after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-in-out after:duration-300 cursor-pointer line-clamp-1"
@@ -129,7 +127,7 @@ const ItemNews = ({
   title,
   description,
   image,
-  id
+  id,
 }: {
   title: string
   description: string
@@ -150,11 +148,8 @@ const ItemNews = ({
           alt={title}
         />
       </div>
-      <div
-        className="flex flex-col gap-2 ml-3
-      "
-      >
-       <Link
+      <div className={`flex flex-col gap-2 ml-3`}>
+        <Link
           href={`/blog/${id}`}
           className="text-2xl font-semibold relative after:absolute after:left-0 w-fit  after:bg-primary after:bottom-1 after:h-[1px] after:w-full after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-in-out after:duration-300 cursor-pointer line-clamp-1"
         >

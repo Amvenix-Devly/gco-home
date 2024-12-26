@@ -28,7 +28,7 @@ const ItemWithImage = ({
         src={imgSrc}
         alt="nav image"
       />
-      <h1 className="font-black uppercase relative z-10 text-3xl group-hover:underline">
+      <h1 className="font-black uppercase relative z-10 text-3xl group-hover:underline text-center">
         {title}
       </h1>
     </Link>
@@ -192,13 +192,25 @@ const DesktopNav = () => {
                 </NavListItem>
               </div>
             </NavItem>
-            <NavItem title="Where we do" path="#">
-              <div className="flex justify-between flex-wrap">
-                <NavListItem title="" path="#">
-                  <LinkItem title="Bangladesh" path="#" />
-                  <LinkItem title="Zimbabwe" path="#" />
-                  <LinkItem title="Uganda" path="#" />
-                </NavListItem>
+            <NavItem title="Projects" path="#">
+              <div className="flex gap-10 flex-wrap">
+                <div className="flex justify-center gap-10 w-full mt-3">
+                  <ItemWithImage
+                    title="Completed Project"
+                    path="/project/complete-project"
+                    imgSrc="/img/desktopnav/cor.jpg"
+                  />
+                  <ItemWithImage
+                    title="On Going Project"
+                    path="/project/on-going-project"
+                    imgSrc="/img/desktopnav/ind.jpg"
+                  />
+                  <ItemWithImage
+                    title="Event"
+                    path="/project/events"
+                    imgSrc="/img/desktopnav/stu.jpg"
+                  />
+                </div>
               </div>
             </NavItem>
           </div>
