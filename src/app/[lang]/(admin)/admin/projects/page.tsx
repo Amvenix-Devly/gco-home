@@ -133,33 +133,36 @@ const addNew = async (data: new_project) => {
   }
 }
 
+
 const allProject = async (type: string, q: string) => {
+  const conditions = []
+
+  if (type) {
+    conditions.push({ projectType: type as any })
+  }
+
+  if (q) {
+    conditions.push(
+      { title: { contains: q } },
+      { fundedby: { contains: q } },
+      { projectArea: { contains: q } }
+    )
+  }
+  const where: any = {}
+
+  if (conditions.length > 0) {
+    where.OR = conditions
+  }
+
   return await db?.project.findMany({
-    where: {
-      OR: [
-        { projectType: type as any },
-        {
-          title: {
-            contains: q,
-          },
-        },
-        {
-          fundedby: {
-            contains: q,
-          },
-        },
-        {
-          projectArea: {
-            contains: q,
-          },
-        },
-      ],
-    },
+    where,
     orderBy: {
       startTime: 'asc',
     },
   })
+
 }
+
 
 const deleteProject = async (id: Number) => {
   'use server'

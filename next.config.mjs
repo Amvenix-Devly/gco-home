@@ -14,10 +14,14 @@ const nextConfig = {
   },
   experimental: {
     reactCompiler: true,
+    serverActions:{
+      bodySizeLimit: '10mb'
+    }
   },
 
   distDir: 'build',
   crossOrigin: 'anonymous',
+
 }
 
 export default nextConfig

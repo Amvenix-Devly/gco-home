@@ -5,7 +5,9 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import { cn } from '@/lib/utils'
 import '@/styles/adminSideBar.css'
 import {
+  AppWindowMac,
   BarChartHorizontal,
+  CalendarDays,
   ChevronLeft,
   Facebook,
   Globe,
@@ -86,6 +88,24 @@ const AdminSideBar = ({ toggled, setToggled }: any) => {
               {!collapsed && 'Projects'}
 
               <BarChartHorizontal className="size-5" />
+            </SideBarLinkButton>
+            <SideBarLinkButton
+              setToggled={setToggled}
+              link="/admin/events"
+              active={'/admin/events' === path}
+            >
+              {!collapsed && 'Events'}
+
+              <CalendarDays className="size-5" />
+            </SideBarLinkButton>
+            <SideBarLinkButton
+              setToggled={setToggled}
+              link="/admin/training"
+              active={'/admin/training' === path}
+            >
+              {!collapsed && 'Training'}
+
+              <AppWindowMac  className="size-5" />
             </SideBarLinkButton>
             <Button
               variant="outline"

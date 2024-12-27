@@ -78,6 +78,9 @@ model Verification {
 enum FileType {
   BLOG_COVER
   USER_PROFILE
+  EVENT_PHOTO
+  TRAINING_PHOTO
+  CAMPAIN_PHOTO
 }
 
 model File {
@@ -87,6 +90,12 @@ model File {
   type      FileType?
   createdAt DateTime   @default(now())
   BlogPost  BlogPost[]
+
+  Event Event[]
+
+  Training Training[]
+
+  Campain Campain[]
 }
 
 model BlogCategory {
@@ -141,4 +150,67 @@ model Project {
   projectType     ProjectType
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
+}
+
+model Event {
+  id            Int       @id @default(autoincrement())
+  title         String
+  description   String?
+  photoId       Int?
+  date          DateTime?
+  duration      String?
+  place         String?
+  beneficiaries String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  photo         File?     @relation(fields: [photoId], references: [id])
+
+  @@map("event")
+}
+
+model Training {
+  id            Int       @id @default(autoincrement())
+  title         String
+  description   String?
+  photoId       Int?
+  date          DateTime?
+  duration      String?
+  place         String?
+  beneficiaries String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  photo         File?     @relation(fields: [photoId], references: [id])
+
+  @@map("training")
+}
+
+model Campain {
+  id            Int       @id @default(autoincrement())
+  title         String
+  description   String?
+  photoId       Int?
+  date          DateTime?
+  duration      String?
+  place         String?
+  beneficiaries String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  photo         File?     @relation(fields: [photoId], references: [id])
+
+  @@map("campain")
+}
+
+model UpComingProgram {
+  id          Int     @id @default(autoincrement())
+  title       String
+  description String?
+
+  date          DateTime?
+  duration      String?
+  place         String?
+  beneficiaries String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@map("upcoming_program")
 }
