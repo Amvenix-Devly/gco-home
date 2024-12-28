@@ -8,8 +8,8 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
-const EventPage = async () => {
-  const allEvents = await db.event.findMany({
+const CampainPage =async () => {
+  const allCampain= await db.training.findMany({
     orderBy: {
       createdAt: 'desc',
     },
@@ -24,11 +24,9 @@ const EventPage = async () => {
       place: true,
     },
   })
-
-  
   return (
     <main className="container mb-20">
-      <h1 className="text-center text-4xl my-10">Events</h1>
+      <h1 className="text-center text-4xl mt-20 mb-10">Campain</h1>
       <Table>
         <TableHeader>
           <TableRow>
@@ -43,7 +41,7 @@ const EventPage = async () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {allEvents.map((event, index) => (
+          {allCampain.map((event, index) => (
             <TableRow key={event.id}>
               <TableCell className="font-medium">{index + 1}</TableCell>
               <TableCell>{event.title}</TableCell>
@@ -59,9 +57,8 @@ const EventPage = async () => {
           ))}
         </TableBody>
       </Table>
-      
     </main>
   )
 }
 
-export default EventPage
+export default CampainPage

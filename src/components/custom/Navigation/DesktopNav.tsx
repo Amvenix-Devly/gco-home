@@ -210,6 +210,11 @@ const DesktopNav = () => {
                     path="/project/events"
                     imgSrc="/img/desktopnav/stu.jpg"
                   />
+                  <ItemWithImage
+                    title="Event"
+                    path="/project/events"
+                    imgSrc="/img/desktopnav/stu.jpg"
+                  />
                 </div>
               </div>
             </NavItem>

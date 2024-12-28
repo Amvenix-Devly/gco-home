@@ -16,6 +16,7 @@ import {
   Moon,
   Notebook,
   NotebookPen,
+  StarIcon,
   Sun,
   Twitch,
   Twitter,
@@ -105,7 +106,25 @@ const AdminSideBar = ({ toggled, setToggled }: any) => {
             >
               {!collapsed && 'Training'}
 
-              <AppWindowMac  className="size-5" />
+              <AppWindowMac className="size-5" />
+            </SideBarLinkButton>
+            <SideBarLinkButton
+              setToggled={setToggled}
+              link="/admin/campain"
+              active={'/admin/campain' === path}
+            >
+              {!collapsed && 'Campain'}
+
+              <StarIcon className="size-5" />
+            </SideBarLinkButton>
+            <SideBarLinkButton
+              setToggled={setToggled}
+              link="/admin/up-comeing-project"
+              active={'/admin/up-comeing-project' === path}
+            >
+              {!collapsed && 'Up Commig Project'}
+
+              <StarIcon className="size-5" />
             </SideBarLinkButton>
             <Button
               variant="outline"
