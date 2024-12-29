@@ -54,7 +54,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground dark:!bg-neutral-900 dark:!text-white;
+    @apply bg-background text-foreground dark:!bg-neutral-900 dark:!text-white scroll-smooth
   }
   ::-moz-selection {
     background: #5cb02f;

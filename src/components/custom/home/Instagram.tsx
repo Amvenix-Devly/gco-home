@@ -7,7 +7,7 @@ import XTab from './TwTab'
 
 const Instagram = ({ fb, x }: any) => {
   return (
-    <section>
+    <section id='social'>
       <div className="container px-3 py-5">
         <div className="mt-5">
           <h1 className="!text-2xl font-semibold md:!text-3xl !py-5 text-center">

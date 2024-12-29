@@ -3,12 +3,11 @@
 
 import Logo from '@/components/shared/Logo'
 import { cn } from '@/lib/utils'
+import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronDown, Menu, Search, ShoppingBag, X } from 'lucide-react'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { usePathname } from 'next/navigation'
-import { navigationData } from './Data'
+import { useEffect, useState } from 'react'
 
 const MobileNav = () => {
   const [mobileNav, setMobileNav] = useState(false)
@@ -67,50 +66,61 @@ const MobileNav = () => {
                 </button>
               </div>
               <div className="flex mt-3 w-full flex-col gap-5 text-stone-300">
-                {navigationData.map((item, index) => {
-                  return (
-                    <MobileNavItem
-                      key={index}
-                      title={item.title}
-                      path={item.path}
-                    >
-                      {item.submenu?.map((submenu, subIndex) => (
-                        <>
-                          {submenu.items?.some((item) => !('src' in item)) && (
-                            <Child
-                              key={`child-${subIndex}`}
-                              title={submenu.title}
-                              path={submenu.path}
-                            >
-                              {submenu.items
-                                ?.filter((item) => !('src' in item))
-                                .map((subItem, itemIndex) => (
-                                  <LinkItem
-                                    key={itemIndex}
-                                    title={subItem.title}
-                                    path={subItem.path}
-                                  />
-                                ))}
-                            </Child>
-                          )}
-
-                      
-                          {submenu.items
-                            ?.filter((item) => 'src' in item)
-                            .map((subItem, itemIndex) => (
-                              <ImageBox
-                                key={`image-${itemIndex}`}
-                                title={subItem.title}
-                                src={(subItem as any).src}
-                                path={subItem.path}
-                                linkTitle={(subItem as any).linkTitle}
-                              />
-                            ))}
-                        </>
-                      ))}
-                    </MobileNavItem>
-                  )
-                })}
+                <MobileNavItem title="Home" path="/" />
+                <MobileNavItem title="About Us" path="#">
+                  <Child title="About GCO" path="/about" />
+                  <Child title="Our Team" path="/about/team" />
+                  <Child title="Our Strength" path="/about/strength" />
+                  <Child title="Our Impact" path="#">
+                    <LinkItem
+                      title="Annual report 2023"
+                      path="/api/report2023"
+                    />
+                  </Child>
+                </MobileNavItem>
+                <MobileNavItem title="NEWS & STORIES" path="#">
+                  <Child title="Social media" path="#social" />
+                  <Child title="Blogs" path="/blog" />
+                  <Child title="Videos" path="/about/videos" />
+                  <Child title="Gallery" path="/about/photo-gallery" />
+                </MobileNavItem>
+                <MobileNavItem title="Get Involved" path="#">
+                  <Child title="Businesses" path="/get-involved/business" />
+                  <Child title="Individuals" path="/get-involved/individuals" />
+                  <Child title="Schools" path="/get-involved/schools" />
+                </MobileNavItem>
+                <MobileNavItem title="What we do" path="#">
+                  <Child
+                    title="Climate action"
+                    path="/what-we-do#climate action"
+                  />
+                  <Child title="Health" path="/what-we-do#health" />
+                  <Child
+                    title="Food Security"
+                    path="/what-we-do#Food Security"
+                  />
+                  <Child
+                    title="Human Rights"
+                    path="/what-we-do#Food Security"
+                  />
+                  <Child title="Our Events" path="/what-we-do#our events" />
+                </MobileNavItem>
+                <MobileNavItem title="Projects" path="#">
+                  <Child
+                    title="Completed Project"
+                    path="/project/complete-project"
+                  />
+                  <Child
+                    title="On Going Project"
+                    path="/project/on-going-project"
+                  />
+                  <Child title="Event" path="/project/events" />
+                  <Child title="Training" path="/project/training" />
+                  <Child
+                    title="Up Coming Project"
+                    path="/project/up-comeing-project"
+                  />
+                </MobileNavItem>
                 <LinkIndItem title="Contact" path="/contact-us" />
                 <LinkIndItem title="Login" path="/join" />
                 <LinkIndItem title="+8801760870070" path="#" />

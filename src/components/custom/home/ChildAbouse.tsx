@@ -19,7 +19,7 @@ const ChildAbouse = () => {
         <div className="hidden md:block md:w-1/2" />
         <div className="md:w-1/2 flex  flex-col items-center md:items-start md:gap-4 sm:gap-3 h-full mt-5 sm:mt-10 md:mt-12">
           <h1 className="text-white font-bold w-[80%] text-center mt-5 md:text-start sm:text-xl lg::text-2xl">
-            One Tree, One Child
+          One Tree for One Child
           </h1>
           <p className="text-white text-sm text-center w-[80%] my-4 md:text-start lg:text-base">
             The One Tree for One Child initiative is a vital program under the

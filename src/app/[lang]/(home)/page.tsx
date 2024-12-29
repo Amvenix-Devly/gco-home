@@ -4,8 +4,10 @@ import ChildAbouse from '@/components/custom/home/ChildAbouse'
 import DonarAndCo from '@/components/custom/home/DonarAndCo'
 import Instagram from '@/components/custom/home/Instagram'
 import MiniWOrdlMap from '@/components/custom/home/MiniWOrdlMap'
+
 import OurProgram from '@/components/custom/home/OurProgram'
 import { PlantTrees } from '@/components/custom/home/PlantTrees'
+
 import db from '@/lib/db'
 
 const HomePage = async () => {
@@ -18,15 +20,14 @@ const HomePage = async () => {
       <div className="md:h-[550px]">
         <Carosel />
       </div>
-      {/* <OurJob /> */}
-      {/* <SixItems /> */}
+
       <OurProgram />
       <PlantTrees />
-      {/* <ProgramOverview /> */}
+
       <BlogSection mostViewedBlog={mostViewedBlog} listBlog={listBlog} />
       <MiniWOrdlMap />
       <ChildAbouse />
-      {/* <Donate /> */}
+
       <DonarAndCo />
       <Instagram fb={listFbPost} x={listXPost} />
     </>

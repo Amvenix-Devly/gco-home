@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
 import { BookOpen, Building2, Home, Leaf } from 'lucide-react'
+import Link from 'next/link'
 
 const programs = [
   {
@@ -42,12 +43,14 @@ const Items = [
     description: 'Protect the Planet, Act Now for Future Generations!',
     title: 'Climate action',
     img: 'https://images.pexels.com/photos/60013/desert-drought-dehydrated-clay-soil-60013.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    path: '/what-we-do#climate%20action',
   },
   {
     id: 2,
     img: 'https://img.freepik.com/free-vector/group-medical-staff-carrying-health-related-icons_53876-43071.jpg',
     description: 'Grow Sustainably, Nourish Communities, Secure Our Future!',
     title: 'Health',
+    path: '/what-we-do#health',
   },
   {
     id: 3,
@@ -55,19 +58,20 @@ const Items = [
     description:
       'Prioritize Health, Empower Lives, Build Stronger Communities!',
     title: 'Food Security',
+    path: '/what-we-do#Food%20Security',
   },
   {
     id: 4,
     img: 'https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg',
     description: 'Equal Rights, Every Voice, Justice for All Humanity!',
     title: 'Human Rights',
+    path: '/what-we-do#Human Rights',
   },
 ]
 
 export default function OurProgram() {
   return (
     <section className="w-full py-12 md:py-20">
-      {/* bg-gradient-to-b from-white to-gray-50 dark:text-black dark:from-gray-700 dark:to-zinc-900 */}
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl dark:text-white capitalize">
@@ -78,40 +82,22 @@ export default function OurProgram() {
             sustainable change in our communities.
           </p>
         </div>
-        {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-          {programs.map((program) => (
-            <Card
-              key={program.title}
-              className={`group relative overflow-hidden transition-all hover:shadow-lg bg-gradient-to-br ${program.gradient}`}
-            >
-              <CardContent className="p-6">
-                <div className="flex items-center space-x-4">
-                  <div
-                    className={`p-3 rounded-lg bg-white shadow-sm group-hover:scale-110 transition-transform ${program.color}`}
-                  >
-                    <program.icon className="w-6 h-6" />
-                  </div>
-                  <div className="space-y-1">
-                    <h3 className="font-bold tracking-tight text-xl dark:text-black">{program.title}</h3>
-                    <p className="text-gray-500 dark:text-gray-400">{program.description}</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div> */}
 
         <div className="flex mt-10 flex-wrap  items-center justify-center">
           {Items.map((item) => (
-            <div key={item.id} className='size-[300px] sm:size-[50%] md:size-[25%]'>
-              <div className='m-5'>
-              <Item
-                content={item.description}
-                img={item.img}
-                title={item.title}
-              />
+            <Link
+              href={item.path}
+              key={item.id}
+              className="size-[300px] sm:size-[50%] md:size-[25%]"
+            >
+              <div className="m-5">
+                <Item
+                  content={item.description}
+                  img={item.img}
+                  title={item.title}
+                />
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -160,7 +146,6 @@ const Item = ({
       whileHover={'hover'}
       whileFocus={'hover'}
       whileDrag={'hover'}
-      
       className="size-full aspect-square rounded-sm group flex justify-center items-center flex-col relative  overflow-hidden"
     >
       <motion.h1

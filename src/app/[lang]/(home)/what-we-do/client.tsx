@@ -21,6 +21,15 @@ const View = ({ data }: any) => {
   const keys = Object.keys(data)
   const [active, setActive] = useState(keys[0])
   const curentItem = data[active]
+   useEffect(() => {
+      window.scrollTo(0, 0)
+      const x = decodeURI(
+        window.location.hash?.split('#')[1]
+          ? window.location.hash?.split('#')[1]
+          : keys[0]
+      )
+      setActive(x)
+    }, [])
 
   return (
     <SwitchLayoutParant className="mt-5">
