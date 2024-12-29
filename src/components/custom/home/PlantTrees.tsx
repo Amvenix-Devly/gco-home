@@ -3,12 +3,14 @@
 
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
+import { useRouter } from 'next/navigation'
 
 const works = [
   {
     title: 'One Tree for One Child',
     content: 'Plant a Tree, Nurture a Child, Grow Futures!',
     image: '/child.jpg',
+    path :'/what-we-do#Food%20Security'
   },
   {
     title: 'TreeLanching',
@@ -19,6 +21,7 @@ const works = [
     title: 'One Tree for One Student',
     content: 'One Student, One Tree, Greener Tomorrow Starts Today!',
     image: '/img/student/img1.jpg',
+    path :'/what-we-do#Food%20Security'
   },
 ]
 
@@ -29,18 +32,21 @@ const GetInTouchItesm = [
       'Become a Tree Ambassador and support our global reforestation efforts',
     image:
       'https://images.pexels.com/photos/9724710/pexels-photo-9724710.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    path: '/get-involved/individuals',
   },
   {
     title: 'Businesses',
     content: 'Enhance your Corporate Social Responsibility',
     image:
       'https://images.pexels.com/photos/7728639/pexels-photo-7728639.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    path: '/get-involved/business',
   },
   {
     title: 'School',
     content: 'Bring Environmental Education to classrooms and campuses',
     image:
       'https://images.stockcake.com/public/7/3/0/730cee1b-2140-4f66-a185-cf5fa8f8cbe4_large/children-planting-tree-stockcake.jpg',
+    path: '/get-involved/schools',
   },
 ]
 
@@ -71,6 +77,7 @@ export const PlantTrees = () => {
             content={work.content}
             img={work.image}
             title={work.title}
+            path={work.path}
           />
         ))}
       </div>
@@ -82,10 +89,12 @@ const Item = ({
   content,
   img,
   title,
+  path,
 }: {
   title: string
   content: string
   img: string
+  path?: string
 }) => {
   const Animat = {
     hover: {
@@ -114,12 +123,14 @@ const Item = ({
       },
     },
   }
+  const { push } = useRouter()
   return (
     <motion.div
+      onClick={() => path && push(path)}
       whileHover={'hover'}
       whileFocus={'hover'}
       whileDrag={'hover'}
-      className="aspect-square h-[340px]  rounded-sm group flex justify-center items-center flex-col relative  overflow-hidden"
+      className="aspect-square h-[340px]  rounded-sm group flex justify-center items-center flex-col relative  overflow-hidden cursor-pointer"
     >
       <motion.h1
         variants={AnimatH1}

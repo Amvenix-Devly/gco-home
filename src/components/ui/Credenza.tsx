@@ -24,6 +24,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
+import useLoading from "@/hooks/useLoading"
 
 interface BaseProps {
   children: React.ReactNode
@@ -42,16 +43,20 @@ interface CredenzaProps extends BaseProps {
 const desktop = "(min-width: 768px)"
 
 const Credenza = ({ children, ...props }: RootCredenzaProps) => {
+  const isLoading = useLoading()
   const isDesktop = useMediaQuery(desktop)
   const Credenza = isDesktop ? Dialog : Drawer
-
+  if (isLoading) return null
   return <Credenza {...props}>{children}</Credenza>
 }
 
 const CredenzaTrigger = ({ className, children, ...props }: CredenzaProps) => {
+  const isLoading = useLoading()
   const isDesktop = useMediaQuery(desktop)
   const CredenzaTrigger = isDesktop ? DialogTrigger : DrawerTrigger
 
+
+  if ( isLoading ) return null
   return (
     <CredenzaTrigger className={className} {...props}>
       {children}
@@ -72,8 +77,9 @@ const CredenzaClose = ({ className, children, ...props }: CredenzaProps) => {
 
 const CredenzaContent = ({ className, children, ...props }: CredenzaProps) => {
   const isDesktop = useMediaQuery(desktop)
+  const loading = useLoading()
   const CredenzaContent = isDesktop ? DialogContent : DrawerContent
-
+ if (loading) return null
   return (
     <CredenzaContent className={className} {...props}>
       {children}
@@ -86,9 +92,10 @@ const CredenzaDescription = ({
   children,
   ...props
 }: CredenzaProps) => {
+  const loading = useLoading()
   const isDesktop = useMediaQuery(desktop)
   const CredenzaDescription = isDesktop ? DialogDescription : DrawerDescription
-
+  if (loading) return null
   return (
     <CredenzaDescription className={className} {...props}>
       {children}
@@ -109,8 +116,9 @@ const CredenzaHeader = ({ className, children, ...props }: CredenzaProps) => {
 
 const CredenzaTitle = ({ className, children, ...props }: CredenzaProps) => {
   const isDesktop = useMediaQuery(desktop)
+  const loading = useLoading()
   const CredenzaTitle = isDesktop ? DialogTitle : DrawerTitle
-
+  if (loading) return null
   return (
     <CredenzaTitle className={className} {...props}>
       {children}

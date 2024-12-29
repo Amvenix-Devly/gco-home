@@ -25,6 +25,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState, useTransition } from 'react'
 import { z } from 'zod'
+import { MultiSelect } from '@/components/ui/multi-select'
 
 const projectSchema = z.object({
   title: z.string().min(3, 'Title must be at least 3 characters'),
@@ -40,6 +41,11 @@ const projectSchema = z.object({
     message: 'Select a project type',
   }),
 })
+
+const projecttAres = ['Climate Change', 'Health', 'Education', 'Food Security', 'Human Rights'].map(area => ({
+  label: area,
+  value: area,
+}))
 
 export const AddProject = ({
   addNewProject,
@@ -82,6 +88,30 @@ export const AddProject = ({
     setContineCh(false)
     setError('')
   }
+
+  const calculateDuration = (start: string, end: string) => {
+    if (!start || !end || end === 'Continue') return ''
+    
+    const startDate = new Date(start)
+    const endDate = new Date(end)
+    const diffTime = Math.abs(endDate.getTime() - startDate.getTime())
+    const diffMonths = Math.ceil(diffTime / (1000 * 60 * 60 * 24 * 30))
+    
+    if (diffMonths < 12) {
+      return `${diffMonths} months`
+    } else {
+      const years = Math.floor(diffMonths / 12)
+      const months = diffMonths % 12
+      return months > 0 ? `${years} years ${months} months` : `${years} years`
+    }
+  }
+
+  useEffect(() => {
+    if (data.startTime && data.endTime && !continueCh) {
+      const duration = calculateDuration(data.startTime, data.endTime)
+      changeData('projectDuration', duration)
+    }
+  }, [data.startTime, data.endTime, continueCh])
 
   const _hendelAddProject = async () => {
     try {
@@ -167,7 +197,7 @@ export const AddProject = ({
             </div>
             <Input
               className="w-full block"
-              id="startDate"
+              id="endDate"
               placeholder="e.g., 2021-01-01"
               type={continueCh ? 'text' : 'date'}
               disabled={continueCh}
@@ -183,6 +213,7 @@ export const AddProject = ({
               placeholder="e.g., 6 months"
               onChange={(e) => changeData('projectDuration', e.target.value)}
               value={data.projectDuration}
+              readOnly={(!continueCh && data.startTime && data.endTime) as boolean}
             />
           </div>
           <div>
@@ -196,11 +227,10 @@ export const AddProject = ({
           </div>
           <div>
             <Label htmlFor="area">Project Area</Label>
-            <Input
-              id="area"
-              placeholder="Project location/area"
-              onChange={(e) => changeData('projectArea', e.target.value)}
-              value={data.projectArea}
+            <MultiSelect
+              options={projecttAres}
+              placeholder="Select project areas"
+              onValueChange={(values) => changeData('projectArea', values.join(','))}
             />
           </div>
           <div>
@@ -339,6 +369,30 @@ export const EditProject = ({
     setData((prev) => ({ ...prev, [key]: value }))
   }
 
+  const calculateDuration = (start: string, end: string) => {
+    if (!start || !end || end === 'Continue') return ''
+    
+    const startDate = new Date(start)
+    const endDate = new Date(end)
+    const diffTime = Math.abs(endDate.getTime() - startDate.getTime())
+    const diffMonths = Math.ceil(diffTime / (1000 * 60 * 60 * 24 * 30))
+    
+    if (diffMonths < 12) {
+      return `${diffMonths} months`
+    } else {
+      const years = Math.floor(diffMonths / 12)
+      const months = diffMonths % 12
+      return months > 0 ? `${years} years ${months} months` : `${years} years`
+    }
+  }
+
+  useEffect(() => {
+    if (data.startTime && data.endTime && !continueCh) {
+      const duration = calculateDuration(data.startTime, data.endTime)
+      changeData('projectDuration', duration)
+    }
+  }, [data.startTime, data.endTime, continueCh])
+
   const handleEdit = async () => {
     try {
       setError('')
@@ -429,6 +483,7 @@ export const EditProject = ({
               placeholder="e.g., 6 months"
               onChange={(e) => changeData('projectDuration', e.target.value)}
               value={data.projectDuration}
+              readOnly={(!continueCh && data.startTime && data.endTime) as boolean}
             />
           </div>
           <div>
@@ -442,11 +497,11 @@ export const EditProject = ({
           </div>
           <div>
             <Label htmlFor="area">Project Area</Label>
-            <Input
-              id="area"
-              placeholder="Project location/area"
-              onChange={(e) => changeData('projectArea', e.target.value)}
-              value={data.projectArea}
+            <MultiSelect
+              options={projecttAres}
+              placeholder="Select project areas"
+              defaultValue={data.projectArea.split(',').filter(Boolean)}
+              onValueChange={(values) => changeData('projectArea', values.join(','))}
             />
           </div>
           <div>

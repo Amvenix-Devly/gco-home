@@ -12,6 +12,9 @@ import {
   CredenzaTitle,
   CredenzaTrigger,
 } from '@/components/ui/Credenza'
+
+
+
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import {
@@ -37,7 +40,7 @@ type Cat = {
 }[]
 
 const AddBlog = ({ cat }: { cat: Cat }) => {
-  const [show, setShow] = useState(true)
+
   const inputImaeg = useRef<HTMLInputElement | null>(null)
   const [coverImage, setCoverImage] = useState<File | null>(null)
   const [value, setValue] = useState('Your blog post here....')
