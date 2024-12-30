@@ -61,9 +61,9 @@ const MobileNav = () => {
           >
             <div className="px-[20px] pb-10">
               <div className="flex justify-center mt-3">
-                <button className="bg-white text-black uppercase font-bold w-full  rounded-[2px] py-1">
+                <Link href='/donation' className="bg-white text-black uppercase font-bold w-full  rounded-[2px] py-1">
                   Donate
-                </button>
+                </Link>
               </div>
               <div className="flex mt-3 w-full flex-col gap-5 text-stone-300">
                 <MobileNavItem title="Home" path="/" />
