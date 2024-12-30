@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 const WhyTreePlants = () => {
   return (
     <section className="border-b border-b-black mb-5">
@@ -37,7 +39,7 @@ const ItemWhyPlan = ({
   return (
     <div className="w-[90%] sm:w-[350px] md:w-[400px] lg:w-[350px]">
       <div className="w-full aspect-square">
-        <img className="w-full h-full object-cover" src={image} alt={title} />
+        <Image className="w-full h-full object-cover" src={image} alt={title} width={400} height={400} />
       </div>
       <div className="space-y-3 mt-3">
         <h3 className="font-bold text-lg">{title}</h3>

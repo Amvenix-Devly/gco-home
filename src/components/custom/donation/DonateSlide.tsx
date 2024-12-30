@@ -1,14 +1,16 @@
 'use client'
 import Image from 'next/image'
-import img1 from '../../../../public/donatetree/pexels-felixmittermeier-1080401.jpg'
-import img2 from '../../../../public/donatetree/pexels-felixmittermeier-1459495.jpg'
-import img3 from '../../../../public/donatetree/pexels-felixmittermeier-1459497.jpg'
-import img4 from '../../../../public/donatetree/pexels-jplenio-1146706.jpg'
+
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import { motion } from 'framer-motion'
 
-const trees = [img1, img2, img3, img4]
+const trees = [
+  '/donatetree/pexels-felixmittermeier-1080401.jpg',
+  '/donatetree/pexels-felixmittermeier-1459495.jpg',
+  '/donatetree/pexels-felixmittermeier-1459497.jpg',
+  '/donatetree/pexels-jplenio-1146706.jpg',
+]
 
 const DonateSlide = () => {
   const [index, setIndex] = useState(0)
@@ -27,8 +29,8 @@ const DonateSlide = () => {
           className="object-cover h-full w-full"
           src={trees[index]}
           alt="trees"
-          height={1000}
-          width={1000}
+          height={500}
+          width={500}
         />
       </motion.div>
       <div className="flex gap-4 mt-5">
@@ -41,8 +43,8 @@ const DonateSlide = () => {
               )}
               src={tree}
               alt="trees"
-              height={100}
-              width={100}
+              height={80}
+              width={80}
               onClick={() => setIndex(i)}
             />
           </div>

@@ -7,6 +7,9 @@ const nextConfig = {
       { hostname: '*.unsplash.com' },
       { hostname: 'ik.imagekit.io' },
       { hostname: 'picsum.photos' },
+      {
+        hostname: 'images.pexels.com',
+      },
     ],
   },
   eslint: {
@@ -14,14 +17,13 @@ const nextConfig = {
   },
   experimental: {
     reactCompiler: true,
-    serverActions:{
-      bodySizeLimit: '10mb'
-    }
+    serverActions: {
+      bodySizeLimit: '10mb',
+    },
   },
 
   distDir: 'build',
   crossOrigin: 'anonymous',
-
 }
 
 export default nextConfig

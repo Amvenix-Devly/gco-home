@@ -1,10 +1,6 @@
 blog send to subscribed email(resent email client)
 email send to subscriber
 
-https://onetreeplanted.org/pages/2023-recap
-
-
-project nav TGGYI FOLENTAIR REGSITRATION
--- from submit from db
+home page child count tree count get from gco admin prod
 
 /about/team -> page dynamic - control from admin panal(multipage support)
