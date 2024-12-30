@@ -60,6 +60,7 @@ const EditBlog = ({ cat, blogId }: { cat: Cat; blogId: string | number }) => {
   const [fetchLoading, setFetchLoading] = useState(true)
   const [published, setPublished] = useState(false)
   const [category, setCategory] = useState('')
+  const [views, setViews] = useState(0)
   const [show, setShow] = useState(false)
   const [errors, setErrors] = useState<{ [key: string]: string }>({})
   const [loading, setLoading] = useState(false)
@@ -78,6 +79,7 @@ const EditBlog = ({ cat, blogId }: { cat: Cat; blogId: string | number }) => {
         setCategory(data.category.id + '')
         setValue(data.content)
         setCoverImage(data.coverImage.fileUrl)
+        setViews(data.views)
         setFetchLoading(false)
       }
       data()
@@ -102,6 +104,7 @@ const EditBlog = ({ cat, blogId }: { cat: Cat; blogId: string | number }) => {
     formData.append('category', category)
     formData.append('published', published.toString())
     formData.append('value', value)
+    formData.append('views', views.toString())
     formData.append('coverImage', coverImage instanceof File ? coverImage : '')
     try {
       await fetch(`/api/blog/?blogId=${blogId}`, {
@@ -242,6 +245,16 @@ const EditBlog = ({ cat, blogId }: { cat: Cat; blogId: string | number }) => {
               {errors.value && (
                 <p className="text-red-500 text-sm">{errors.value}</p>
               )}
+            </div>
+
+            <div className="mt-3 space-y-1">
+              <Label>Views</Label>
+              <Input
+                type="number"
+                min="0"
+                value={views}
+                onChange={(e) => setViews(parseInt(e.target.value) || 0)}
+              />
             </div>
 
             <div className="mt-3 space-y-1">

@@ -23,6 +23,7 @@ export const POST = async (req: NextRequest) => {
   const coverImage = body.get('coverImage')
   const category = body.get('category') as string
   const published = body.get('published') as string
+  const views = parseInt(body.get('views') as string) || 0 // Add this line
 
   if (!title || !description || !coverImage || !category || !published) {
     return NextResponse.json(
@@ -47,6 +48,7 @@ export const POST = async (req: NextRequest) => {
         published: published === 'true',
         categoryId: Number(category),
         coverImageID: newFile.id,
+        views: views, // Add this line
       },
     })
 
@@ -120,6 +122,7 @@ export const PUT = async (req: NextRequest) => {
   const coverImage = body.get('coverImage')
   const category = body.get('category') as string
   const published = body.get('published') as string
+  const views = parseInt(body.get('views') as string) || 0 // Add this line
 
   if (!title || !description || !category || !published) {
     return NextResponse.json(
@@ -167,6 +170,7 @@ export const PUT = async (req: NextRequest) => {
         content: description,
         published: published === 'true',
         categoryId: Number(category),
+        views: views, // Add this line
         ...(newFile && { coverImageID: newFile.id }),
       },
     })

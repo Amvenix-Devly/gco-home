@@ -103,7 +103,7 @@ const MobileNav = () => {
                     title="Human Rights"
                     path="/what-we-do#Food Security"
                   />
-                  <Child title="Our Events" path="/what-we-do#our events" />
+                  <Child title="Events" path="/what-we-do#events" />
                 </MobileNavItem>
                 <MobileNavItem title="Projects" path="#">
                   <Child

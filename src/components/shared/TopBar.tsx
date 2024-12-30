@@ -5,7 +5,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { signOut, useSession } from '@/lib/auth-client'
 import {
@@ -22,7 +22,7 @@ import { useRouter } from 'next/navigation'
 const TopBar = () => {
   const { data } = useSession() as any
   const user = data?.user
-  const {refresh} = useRouter()
+  const { refresh } = useRouter()
   const hendelLogout = async () => {
     await signOut()
     refresh()
@@ -68,8 +68,6 @@ const TopBar = () => {
                   <h1 className="font-bold cursor-pointer">{user.name}</h1>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-32 dark:bg-bgMain">
-                  <DropdownMenuItem>Account</DropdownMenuItem>
-                  <DropdownMenuItem>Profile</DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link href="/admin">Dashboard</Link>
                   </DropdownMenuItem>
@@ -89,9 +87,7 @@ const TopBar = () => {
               </Link>
             )}
           </>
-          <button
-            className="flex gap-1 items-center bg-white  text-bgMain hover:bg-bgMain hover:text-white h-10 px-2"
-          >
+          <button className="flex gap-1 items-center bg-white  text-bgMain hover:bg-bgMain hover:text-white h-10 px-2">
             <ShoppingBag className="size-5" />0
           </button>
         </div>

@@ -1,10 +1,29 @@
 /* eslint-disable react/no-unescaped-entities */
+'use client'
+
 import GaugeCircle from '@/components/ui/aimate/gauge-circle'
-import Map from './Map'
+
+import { useIntersectionObserver } from 'usehooks-ts'
+import dynamic from 'next/dynamic'
+import { Loader2 } from 'lucide-react'
+
+const Map = dynamic(() => import('./Map'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-full w-full justify-center items-center border">
+      <Loader2 className='animate-spin' size={25} />
+    </div>
+  ),
+})
 
 const MiniWOrdlMap = () => {
+  const { isIntersecting, ref } = useIntersectionObserver({
+    threshold: 0.5,
+    freezeOnceVisible: true,
+  })
+
   return (
-    <section className="my-10 md:my-20 container px-3">
+    <section ref={ref} className="my-10 md:my-20 container px-3">
       <div className="md:flex md:items-center">
         <div className="flex flex-col items-center md:items-start md:w-[40%]">
           <h1 className="text-center w-[80%] text-main font-bold text-2xl md:text-start">
@@ -58,14 +77,10 @@ const MiniWOrdlMap = () => {
               </p>
             </div>
           </div>
-          {/* <p className="text-center w-[80%] text-sm mt-5 md:text-start md:text-base font-bold">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia,
-            minima!
-          </p> */}
         </div>
         <div className="flex justify-center md:items-center md:w-[60%]">
           <div className="mt-10 md:mt-0 w-[90%] md:w-full h-[400px]">
-            <Map />
+            {isIntersecting && <Map />}
           </div>
         </div>
       </div>

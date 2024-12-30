@@ -27,13 +27,13 @@ const ItemWithImage = ({
       href={path}
     >
       <Image
-        className="absolute top-0 left-0 right-0 bottom-0 object-cover size-full group-hover:brightness-[40%] transition duration-300"
+        className="absolute top-0 left-0 right-0 bottom-0 object-cover size-full group-hover:brightness-[80%] transition duration-300"
         width={200}
         height={200}
         src={imgSrc}
         alt="nav image"
       />
-      <h1 className="font-black uppercase relative z-10 text-3xl group-hover:underline text-center">
+      <h1 className="font-black uppercase relative z-10 text-3xl text-center text-black bg-white bg-opacity-35 w-full py-2 mx-2 rounded backdrop-blur-md dark:bg-black dark:bg-opacity-50 dark:text-white">
         {title}
       </h1>
     </Link>
@@ -68,10 +68,10 @@ const DesktopNav = () => {
                   path="/about/strength"
                   imgSrc="/img/desktopnav/about/stength.jpg"
                 />
-                <div className="aspect-square w-60 bg-black bg-opacity-25 p-3 rounded">
-                  <p className="font-bold">Our Impact</p>
+                <div className="aspect-square w-60 bg-black bg-opacity-25 p-3 rounded backdrop-blur-md">
+                  <p className="font-bold text-xl">Our Impact</p>
                   <div className="ml-3 mt-1">
-                    <Link href="/api/report2023">Annual report 2023</Link>
+                    <Link href="/api/report2023" className='hover:underline'>Annual report 2023</Link>
                   </div>
                 </div>
               </div>
@@ -89,13 +89,13 @@ const DesktopNav = () => {
                   imgSrc="/img/desktopnav/news/blog.jpg"
                 />
                 <ItemWithImage
-                  title="Vidios"
+                  title="Videos"
                   path="/about/videos"
                   imgSrc="/img/desktopnav/news/vidio.jpg"
                 />
                 <ItemWithImage
                   className="text-black"
-                  title="Gallary"
+                  title="Gallery"
                   path="/about/photo-gallery"
                   imgSrc="/img/desktopnav/news/gallary.jpg"
                 />
@@ -144,9 +144,19 @@ const DesktopNav = () => {
                   imgSrc="/img/desktopnav/whatwedo/human.jpg"
                 />
                 <ItemWithImage
-                  title="Our Events"
-                  path="/what-we-do#our events"
+                  title="Events"
+                  path="/what-we-do#events"
                   imgSrc="/img/desktopnav/whatwedo/event.jpg"
+                />
+                <ItemWithImage
+                  title="Campaigns"
+                  path="/what-we-do#campaigns"
+                  imgSrc="/img/desktopnav/whatwedo/campain.png"
+                />
+                <ItemWithImage
+                  title="Training"
+                  path="/what-we-do#training"
+                  imgSrc="/img/desktopnav/whatwedo/training.jpg"
                 />
               </div>
             </NavItem>
@@ -174,7 +184,7 @@ const DesktopNav = () => {
                     imgSrc="/img/desktopnav/training.jpg"
                   />
                   <ItemWithImage
-                    title="Up Comming Project"
+                    title="Up coming program"
                     path="/project/up-comeing-project"
                     imgSrc="/img/desktopnav/upproject.jpg"
                   />

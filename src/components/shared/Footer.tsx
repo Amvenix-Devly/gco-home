@@ -1,5 +1,8 @@
+'use client'
 import { Facebook, Instagram, Linkedin, Mail, X, Youtube } from 'lucide-react'
 import Link from 'next/link'
+import { useState, useTransition } from 'react'
+import { subscribeToNewsletter } from '@/app/[lang]/(home)/newsletter/action'
 import {
   Accordion,
   AccordionContent,
@@ -25,6 +28,58 @@ const PlantingPartnerImages = [
   '/img/footer/plan1.webp',
   '/img/footer/plan2.jpg',
 ]
+
+const NewsletterForm = () => {
+  const [isPending, startTransition] = useTransition()
+  const [error, setError] = useState<string | null>(null)
+  const [success, setSuccess] = useState(false)
+  const [formData, setFormData] = useState({ name: '', email: '' })
+
+  const handleSubmit = () => {
+    setError(null)
+    setSuccess(false)
+    
+    startTransition(async () => {
+      const result = await subscribeToNewsletter(formData)
+      if (result.error) {
+        setError(result.error)
+      } else {
+        setSuccess(true)
+        setFormData({ name: '', email: '' })
+      }
+    })
+  }
+
+  return (
+    <div className="flex flex-col gap-3 items-center">
+      <input
+        className="w-full rounded-[5px] py-2 px-2"
+        type="text"
+        placeholder="Enter your first name"
+        value={formData.name}
+        onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+        disabled={isPending}
+      />
+      <input
+        className="w-full rounded-[5px] py-2 px-2"
+        type="email"
+        placeholder="Enter your email"
+        value={formData.email}
+        onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+        disabled={isPending}
+      />
+      <button 
+        className="w-full rounded-[5px] py-2 bg-main2 disabled:opacity-50"
+        onClick={handleSubmit}
+        disabled={isPending}
+      >
+        {isPending ? 'Signing up...' : 'Sign up'}
+      </button>
+      {error && <p className="text-red-500 text-sm">{error}</p>}
+      {success && <p className="text-green-500 text-sm">Successfully subscribed!</p>}
+    </div>
+  )
+}
 
 const MobileFooter = () => {
   return (
@@ -165,20 +220,8 @@ const MobileFooter = () => {
             </AccordionItem>
           </Accordion>
         </div>
-        <div className="my-10 flex flex-col gap-3  items-center">
-          <input
-            className="w-[80%] rounded-[5px] py-2 px-2 text-black"
-            type="text"
-            placeholder="Enter your first name"
-          />
-          <input
-            className="w-[80%] rounded-[5px] py-2 px-2 text-black"
-            type="text"
-            placeholder="Enter your email"
-          />
-          <button className="w-[80%] rounded-[5px] py-2 bg-main2">
-            Sign up
-          </button>
+        <div className="my-10 w-[80%] mx-auto">
+          <NewsletterForm />
         </div>
       </div>
     </footer>
@@ -318,20 +361,8 @@ const DesktopFooter = () => {
           </div>
           <div className="w-[calc(20%-10px)]">
             <h1 className="text-lg font-semibold mt-5">NEWSLETTER SIGNUP</h1>
-            <div className="my-3 flex flex-col gap-3  items-center">
-              <input
-                className="w-[100%] rounded-[5px] py-2 px-2 text-black"
-                type="text"
-                placeholder="Enter your first name"
-              />
-              <input
-                className="w-[100%] rounded-[5px] py-2 px-2 text-black"
-                type="text"
-                placeholder="Enter your email"
-              />
-              <button className="w-[100%] rounded-[5px] py-2 bg-main2">
-                Sign up
-              </button>
+            <div className="my-3">
+              <NewsletterForm />
             </div>
           </div>
         </div>

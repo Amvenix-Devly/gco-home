@@ -9,14 +9,14 @@ import {
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import Image from 'next/image'
 import { Login, Register } from './Client'
-const imgs = ['/b/b2.png', '/b/b3.jpg', '/b/b4.jpg', '/b/b5.jpg']
+
 
 const LoginRegisterPage = () => {
   return (
     <div className="flex h-screen">
       <div className="hidden lg:block lg:w-1/2 bg-gray-100">
         <Image
-          src={imgs[Math.floor(Math.random() * imgs.length)]}
+          src='https://images.unsplash.com/photo-1476231682828-37e571bc172f?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=geranimo-qzgN45hseN0-unsplash.jpg&w=2400'
           alt="Auth background"
           className="w-full h-full object-cover"
           width={1920}

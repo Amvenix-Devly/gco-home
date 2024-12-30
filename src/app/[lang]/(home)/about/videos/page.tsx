@@ -1,20 +1,15 @@
-const vidioIds = [
-  't8-Yj2Yo7P0',
-  'jXJ2kW8YGn4',
-  'MeYhuuJTlhg',
-  'loSwWHPEPOM',
-  'DtJz6qBTrOc',
-  '-XlGe8oLUWA',
-  'gxedybk_aOs',
-  'eRkydr7GQKQ',
-  'aVJaQQFOgOo',
-  'kwnuGSUMMDc'
+const VideosPage = async () => {
+  const API_KEY = 'AIzaSyCLhqxrB-1f47v8inbfdTAJXt-3SFK00lo'
+  const CHANNEL_ID = 'UC_-SQG_O7X4GjMqyankrZTw'
+  const url = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&order=date&part=snippet&type=video&maxResults=21`
+  const response = await fetch(url, {
+    next: {
+      revalidate: 86400,
+    },
+  })
+  const data = await response.json()
+  const videosIds = data?.items
 
-]
-
-
-
-const VideosPage = () => {
   return (
     <>
       <h1 className="text-center font-bold text-2xl md:text-3xl py-5 bg-primary text-white">
@@ -22,20 +17,14 @@ const VideosPage = () => {
       </h1>
       <main className="container mt-8">
         <div className="flex flex-wrap  p-5 bg-black bg-opacity-5 m-4 rounded-[8px]">
-          {vidioIds.map((id, index) => (
+          {videosIds.map((v: any, index: number) => (
             <div key={index} className="w-full sm:w-1/2 p-4  xl:w-1/3 ">
               <iframe
-                src={`https://www.youtube.com/embed/${id}`}
+                src={`https://www.youtube.com/embed/${v.id.videoId}`}
                 className="w-full aspect-video rounded-[4px]"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>
-              {/* <h1 className="max-w-[90%] mx-3 line-clamp-1 mt-3 text-center">
-                Title Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Quibusdam, explicabo. Labore alias doloribus earum fugiat,
-                reprehenderit quod facilis, porro a cumque blanditiis aliquid?
-                Rerum distinctio similique magni repellat, earum mollitia.
-              </h1> */}
             </div>
           ))}
         </div>

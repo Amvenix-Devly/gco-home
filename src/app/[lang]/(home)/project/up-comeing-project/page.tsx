@@ -26,7 +26,7 @@ const UpCommingPage = async () => {
   })
   return (
     <main className="container mb-20">
-      <h1 className="text-center text-4xl mt-20 mb-10">Up comming project</h1>
+      <h1 className="text-center text-4xl mt-20 mb-10">Up coming program</h1>
       <Table>
         <TableHeader>
           <TableRow>

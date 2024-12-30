@@ -65,9 +65,10 @@ const CredenzaTrigger = ({ className, children, ...props }: CredenzaProps) => {
 }
 
 const CredenzaClose = ({ className, children, ...props }: CredenzaProps) => {
+  const loading = useLoading()
   const isDesktop = useMediaQuery(desktop)
   const CredenzaClose = isDesktop ? DialogClose : DrawerClose
-
+  if (loading) return null
   return (
     <CredenzaClose className={className} {...props}>
       {children}

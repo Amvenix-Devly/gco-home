@@ -1,13 +1,27 @@
 /* eslint-disable @next/next/no-img-element */
+'use client'
 
 import { TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Tabs } from '@radix-ui/react-tabs'
-import FbTab from './FbTab'
-import XTab from './TwTab'
+import { useIntersectionObserver } from 'usehooks-ts'
+
+import dynamic from 'next/dynamic'
+const XTab = dynamic(() => import('./TwTab'), {
+  ssr: false,
+  loading: () => null,
+})
+const FbTab = dynamic(() => import('./FbTab'), {
+  ssr: false,
+  loading: () => null,
+})
 
 const Instagram = ({ fb, x }: any) => {
+  const { isIntersecting, ref } = useIntersectionObserver({
+    threshold: 0.1,
+    freezeOnceVisible: true,
+  })
   return (
-    <section id='social'>
+    <section ref={ref} id="social">
       <div className="container px-3 py-5">
         <div className="mt-5">
           <h1 className="!text-2xl font-semibold md:!text-3xl !py-5 text-center">
@@ -24,10 +38,10 @@ const Instagram = ({ fb, x }: any) => {
             </div>
             <div className="w-full">
               <TabsContent value="fb">
-                <FbTab fb={fb} />
+                {isIntersecting && <FbTab fb={fb} />}
               </TabsContent>
               <TabsContent value="ins">
-                <XTab x={x} />
+                {isIntersecting && <XTab x={x} />}
               </TabsContent>
             </div>
           </Tabs>

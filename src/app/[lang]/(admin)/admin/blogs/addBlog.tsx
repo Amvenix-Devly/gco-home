@@ -47,6 +47,7 @@ const AddBlog = ({ cat }: { cat: Cat }) => {
   const [title, setTitle] = useState('')
   const [published, setPublished] = useState(false)
   const [category, setCategory] = useState('')
+  const [views, setViews] = useState(0)
   const [errors, setErrors] = useState({
     title: '',
     body: '',
@@ -91,6 +92,7 @@ const AddBlog = ({ cat }: { cat: Cat }) => {
     const formData = new FormData()
     formData.append('title', title)
     formData.append('description', value)
+    formData.append('views', views.toString())
     if (coverImage) {
       formData.append('coverImage', coverImage)
     }
@@ -236,6 +238,15 @@ const AddBlog = ({ cat }: { cat: Cat }) => {
               </div>
               <MDEditor value={value} onChange={(val) => setValue(val || '')} />
               {errors.body && <p className="text-red-500">{errors.body}</p>}
+            </div>
+            <div className="mt-3 space-y-1">
+              <Label>Views</Label>
+              <Input
+                type="number"
+                min="0"
+                value={views}
+                onChange={(e) => setViews(parseInt(e.target.value) || 0)}
+              />
             </div>
             <div className="mt-3 space-y-1">
               <input
