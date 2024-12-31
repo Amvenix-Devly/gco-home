@@ -13,6 +13,7 @@ import {
   Globe,
   Home,
   LogOut,
+  Mail,
   Moon,
   Notebook,
   NotebookPen,
@@ -125,6 +126,15 @@ const AdminSideBar = ({ toggled, setToggled }: any) => {
               {!collapsed && 'Up Commig Project'}
 
               <StarIcon className="size-5" />
+            </SideBarLinkButton>
+            <SideBarLinkButton
+              setToggled={setToggled}
+              link="/admin/email"
+              active={'/admin/email' === path}
+            >
+              {!collapsed && 'Send Email'}
+
+              <Mail className="size-5" />
             </SideBarLinkButton>
             <Button
               variant="outline"

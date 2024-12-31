@@ -1,9 +1,15 @@
+import db from '@/lib/db'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { after } from 'next/server'
+import { BsTwitterX } from 'react-icons/bs'
+import { FaFacebook, FaLinkedin } from 'react-icons/fa'
+import { IoMailSharp } from 'react-icons/io5'
 import ReactMarkdown from 'react-markdown'
-import db from '@/lib/db'
+import { Donate } from './c'
+
+const siteUrl = process.env.NEXT_PUBLIC_URL!
 const getBlog = async (id: string) =>
   await db?.blogPost.findUnique({
     where: { id: id },
@@ -59,6 +65,7 @@ const ItemBlogPage = async ({ params }: any) => {
       },
     })
   })
+  const shareUrl = `${siteUrl}/blog/${id}`
 
   return (
     <article className="min-h-screen">
@@ -99,22 +106,61 @@ const ItemBlogPage = async ({ params }: any) => {
 
       {/* Content Section */}
       <div className="container mx-auto px-4 py-12">
+        {/* //social sidebar */}
+
+        <div className="sticky top-32  hidden  md:flex flex-col gap-4 float-left">
+          <a
+            target="_blank"
+            className="hover:text-blue-600 transition-colors"
+            href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`}
+          >
+            <FaFacebook className="size-8" />
+          </a>
+          <a
+            target="_blank"
+            className=" transition-colors"
+            href={`https://twitter.com/intent/tweet?text=${shareUrl}`}
+          >
+            <BsTwitterX className="size-8" />
+          </a>
+          <a
+            target="_blank"
+            className="hover:text-blue-400 transition-colors"
+            href={`https://www.linkedin.com/shareArticle?mini=true&url=${shareUrl}`}
+          >
+            <FaLinkedin className="size-8" />
+          </a>
+          <a
+            target="_blank"
+            className="hover:text-red-600 transition-colors"
+            href={`mailto:?subject=GCO&body=${shareUrl}`}
+          >
+            <IoMailSharp className="size-8" />
+          </a>
+        </div>
+
+        <div className="flex justify-between flex-col xl:flex-row">
+          <div className="max-w-3xl mx-auto">
+            <div className="prose dark:prose-invert lg:prose-lg">
+              <ReactMarkdown>{blog.content}</ReactMarkdown>
+            </div>
+
+            <div className="mt-5 flex flex-wrap gap-2">
+              <Link
+                href={`/blog?catId=${blog.category.id}`}
+                className="text-green-400 mb-4 inline-block"
+              >
+                {blog.category.name}
+              </Link>
+            </div>
+          </div>
+          <div className="xl:w-[33.33%] mx-auto w-full max-w-[500px] mt-10 xl:mt-0">
+            <Donate />
+          </div>
+        </div>
         <div className="max-w-3xl mx-auto">
-          <div className="prose dark:prose-invert lg:prose-lg">
-            <ReactMarkdown>{blog.content}</ReactMarkdown>
-          </div>
-
-          <div className="mt-5 flex flex-wrap gap-2">
-            <Link
-              href={`/blog?catId=${blog.category.id}`}
-              className="text-green-400 mb-4 inline-block"
-            >
-              {blog.category.name}
-            </Link>
-          </div>
-
           {/* Related Posts */}
-          <div className="mt-16">
+          <div className="mt-5">
             <h2 className="text-2xl font-bold mb-6 dark:text-white">
               Related Posts
             </h2>

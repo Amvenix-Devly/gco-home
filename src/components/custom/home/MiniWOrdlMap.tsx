@@ -6,6 +6,7 @@ import GaugeCircle from '@/components/ui/aimate/gauge-circle'
 import { useIntersectionObserver } from 'usehooks-ts'
 import dynamic from 'next/dynamic'
 import { Loader2 } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
 const Map = dynamic(() => import('./Map'), {
   ssr: false,
@@ -21,6 +22,17 @@ const MiniWOrdlMap = () => {
     threshold: 0.5,
     freezeOnceVisible: true,
   })
+  const [data,setData] = useState({tree: 97932, user: 41, ot4oc: 25995})
+  useEffect(() => {
+    if(isIntersecting){
+      const fetchData = async () => {
+        const res = await fetch('https://app.globalcommunityorganization.org/api/getdata')
+        const data = await res.json()
+        setData(data)
+
+      }
+      fetchData()
+    }  }, [isIntersecting])
 
   return (
     <section ref={ref} className="my-10 md:my-20 container px-3">
@@ -39,9 +51,9 @@ const MiniWOrdlMap = () => {
           <div className="flex flex-col gap-10 items-start mt-10 sm:flex-row justify-between">
             <div className="flex flex-col items-center ">
               <GaugeCircle
-                max={100000}
+                max={data.tree+ 10000}
                 min={0}
-                value={94109}
+                value={data.tree}
                 gaugePrimaryColor="rgb(92 176 47)"
                 gaugeSecondaryColor="rgba(0, 0, 0, 0.1)"
                 className="md:size-24"
@@ -52,9 +64,9 @@ const MiniWOrdlMap = () => {
             </div>
             <div className="flex flex-col items-center">
               <GaugeCircle
-                max={30000}
+                max={data.ot4oc+9000}
                 min={0}
-                value={25232}
+                value={data.ot4oc}
                 gaugePrimaryColor="rgb(92 176 47)"
                 gaugeSecondaryColor="rgba(0, 0, 0, 0.1)"
                 className="md:size-24"
@@ -63,19 +75,26 @@ const MiniWOrdlMap = () => {
                 Clild
               </p>
             </div>
+
             <div className="flex flex-col items-center">
               <GaugeCircle
-                max={100}
+                max={data.user+100}
                 min={0}
-                value={60}
+                value={data.user}
                 gaugePrimaryColor="rgb(92 176 47)"
                 gaugeSecondaryColor="rgba(0, 0, 0, 0.1)"
                 className="md:size-24"
               />
               <p className="text-center font-thin text-sm md:mt-3 md:w-[60%]">
-                {/* Lorem ipsum */}
+              Volunteer
               </p>
             </div>
+
+
+
+
+
+            
           </div>
         </div>
         <div className="flex justify-center md:items-center md:w-[60%]">
