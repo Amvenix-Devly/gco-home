@@ -10,11 +10,21 @@ const transporter = nodemailer.createTransport({
   },
 })
 
-export const sendEmail = async (to: string, text: string, html?: string) => {
+export const sendEmail = async ({
+  html,
+  subject = 'Global Community Organization',
+  text,
+  to,
+}: {
+  to: string
+  subject?: string
+  text: string
+  html?: string
+}) => {
   const mailOptions = {
     from: 'globalco@globalcommunityorganization.org',
     to: to,
-    subject: 'Global Community Organization',
+    subject: subject,
     text: text,
     html: html,
   }
