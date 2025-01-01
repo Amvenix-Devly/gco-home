@@ -16,6 +16,32 @@ export const metadata: Metadata = {
   title: 'Global Community Organization',
   description:
     'Global Community Organization · Mission · To develop healthy, standardized, improved living system and sustainable environment is the only goal.',
+  twitter: {
+    title: 'Global Community Organization',
+    description:
+      'Global Community Organization · Mission · To develop healthy, standardized, improved living system and sustainable environment is the only goal.',
+    images: [
+      {
+        url: '/child.jpg',
+        alt: 'One tree for One child',
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  openGraph: {
+    title: 'Global Community Organization',
+    description:
+      'Global Community Organization · Mission · To develop healthy, standardized, improved living system and sustainable environment is the only goal.',
+    images: [
+      {
+        url: '/child.jpg',
+        alt: 'One tree for One child',
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 }
 
 export default function RootLayout({

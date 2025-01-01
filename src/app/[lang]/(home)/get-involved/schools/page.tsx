@@ -1,19 +1,32 @@
 /* eslint-disable @next/next/no-img-element */
-import { School, TreePine, Users } from 'lucide-react';
-import { FeaturesSection } from './client';
-import { Facebook, Twitter, Youtube, Mail } from 'lucide-react';
-import { Input } from '@/components/ui/input';
+import { School, TreePine, Users } from 'lucide-react'
+import { FeaturesSection } from './client'
+import { Facebook, Twitter, Youtube, Mail } from 'lucide-react'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
 
-const SchoolsPage = () => {
+const getdata = async () => {
+  try {
+    const r = await fetch('https://gco-student.vercel.app/api/out')
+    const data: { trees: number; users: number; institutes: number } =
+      await r.json()
+    return data
+  } catch (error) {
+    console.log(error)
+    return { trees: 0, users: 0, institutes: 0 }
+  }
+}
+
+const SchoolsPage = async () => {
+  const data = await getdata()
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-[60vh] overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 z-0 w-full h-full">
           <img
-            src="https://img.freepik.com/free-photo/young-girl-measuring-sprouts-growing-home_23-2148831369.jpg?t=st=1734887199~exp=1734890799~hmac=85007d45eea6413ea3e5c3924d950c5b4d29e7e20a0e698e98a44423bb6777ec&w=1800"
+            src="/img/student/img1.jpg"
             alt="Students planting trees"
-       
             className="object-cover w-full h-full  brightness-50"
           />
         </div>
@@ -24,9 +37,11 @@ const SchoolsPage = () => {
           <p className="text-xl md:text-2xl max-w-2xl mx-auto mb-8">
             Empower your students to make a difference in their environment
           </p>
-          <button className="bg-green-600 text-white px-8 py-3 rounded-full font-bold hover:bg-green-700 transition-colors">
-            Join the Program
-          </button>
+          <Button asChild>
+            <a target="_blank" href="https://gco-student.vercel.app/">
+              Join the Program
+            </a>
+          </Button>
         </div>
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-4">
           {socialLinks.map((item, idx) => (
@@ -54,7 +69,7 @@ const SchoolsPage = () => {
                   <impact.icon size={48} className="text-green-600" />
                 </div>
                 <div className="text-4xl font-bold text-green-600 mb-2">
-                  {impact.number}
+                  {data[impact?.name as keyof typeof data]}
                 </div>
                 <div className="text-gray-700">{impact.description}</div>
               </div>
@@ -73,9 +88,11 @@ const SchoolsPage = () => {
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Make a lasting impact on your students and the environment
           </p>
-          <button className="bg-white text-green-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors">
-            Get Started
-          </button>
+          <Button variant='outline' asChild>
+            <a target="_blank" href="https://gco-student.vercel.app/">
+              Get Started
+            </a>
+          </Button>
         </div>
       </section>
 
@@ -83,7 +100,9 @@ const SchoolsPage = () => {
       <section className="py-16 text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-2">Get the Resources</h2>
-          <p className="text-lg font-light mb-8">Fill out the form to get access to the program!</p>
+          <p className="text-lg font-light mb-8">
+            Fill out the form to get access to the program!
+          </p>
           <form className="max-w-md mx-auto space-y-4">
             <Input
               type="text"
@@ -110,44 +129,44 @@ const SchoolsPage = () => {
         </div>
       </section>
     </main>
-  );
-};
+  )
+}
 
 const impacts = [
-  { 
-    number: '1M+', 
+  {
+    name: 'trees',
     description: 'Trees Planted',
-    icon: TreePine
+    icon: TreePine,
   },
-  { 
-    number: '500+', 
+  {
+    name: 'institutes',
     description: 'Schools Involved',
-    icon: School
+    icon: School,
   },
-  { 
-    number: '50K+', 
+  {
+    name: 'users',
     description: 'Students Engaged',
-    icon: Users
+    icon: Users,
   },
-];
+]
 
 const socialLinks = [
   {
-    href: "mailto:hello@globalcommunityorganization.org",
+    href: 'mailto:hello@globalcommunityorganization.org',
     icon: Mail,
   },
   {
-    href: "https://www.facebook.com/GlobalCommunityOrganization",
+    href: 'https://www.facebook.com/GlobalCommunityOrganization',
     icon: Facebook,
   },
   {
-    href: "https://x.com/Global_Com_Org",
+    href: 'https://x.com/Global_Com_Org',
     icon: Twitter,
   },
   {
-    href: "https://youtube.com/@globalcommunityorganization?si=4emJ0AAcpVYRhpkZ",
+    href: 'https://youtube.com/@globalcommunityorganization?si=4emJ0AAcpVYRhpkZ',
     icon: Youtube,
   },
-];
+]
 
-export default SchoolsPage;
+export default SchoolsPage

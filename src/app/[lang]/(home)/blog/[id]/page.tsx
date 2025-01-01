@@ -217,4 +217,40 @@ export async function generateStaticParams() {
   return allBlog
 }
 
+import type { Metadata } from 'next'
+
+export const generateMetadata = async ({ params }: any): Promise<Metadata> => {
+  const { id } = (await params) as { id: string }
+  const blog = await getBlog(id)
+  if (!blog) return notFound()
+  return {
+    title: blog.title,
+    description: blog.content.slice(0, 100),
+    twitter: {
+      title: blog.title,
+      description: blog.content.slice(0, 100),
+      images: [
+        {
+          url: blog.coverImage.fileUrl,
+          alt: blog.title,
+          width: 800,
+          height: 600,
+        },
+      ],
+    },
+    openGraph: {
+      title: blog.title,
+      description: blog.content.slice(0, 100),
+
+      images: [
+        {
+          url: blog.coverImage.fileUrl,
+          alt: blog.title,
+          width: 800,
+          height: 600,
+        },
+      ],
+    },
+  }
+}
 export default ItemBlogPage
