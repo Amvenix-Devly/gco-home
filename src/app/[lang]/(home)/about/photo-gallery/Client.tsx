@@ -12,17 +12,27 @@ import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
 
 const SwitChLayout = ({ allCat }: any) => {
-  const [active, setActive] = useState(allCat[0].name)
+  const [active, setActive] = useState('allitem')
   const [open, setOpen] = useState(false)
   const [activeUrl, setActiveUrl] = useState('')
   const activeImages = allCat.find(
     (item: any) => item.name === active
   )?.BlogPost
-  console.log(activeImages)
+ 
   return (
     <>
       <SwitchLayoutParant className="mt-5">
         <SweetchLayoutSidebar>
+          <Switch
+            className="text-start capitalize"
+            active={active === 'allitem'}
+            onClick={() => {
+              window.location.hash = 'allitem'
+              setActive('allitem')
+            }}
+          >
+            All Images
+          </Switch>
           {allCat.map((item: any, i: any) => (
             <Switch
               key={i}
@@ -39,6 +49,29 @@ const SwitChLayout = ({ allCat }: any) => {
         </SweetchLayoutSidebar>
         <SweetchLayoutContent className="p-0">
           <div className="flex flex-wrap">
+            {
+              active === 'allitem' &&
+              allCat.map((item: any, index: number) => (
+                item.BlogPost.map((item: any, index: number) => (
+                  <div
+                    className="aspect-square md:w-[33.3333%] sm:w-[50%] w-full rounded-sm p-4 group/item"
+                    key={index}
+                  >
+                    <Image
+                      src={item?.coverImage?.fileUrl}
+                      width={400}
+                      height={400}
+                      alt=""
+                      onClick={() => {
+                        setActiveUrl(item?.coverImage?.fileUrl)
+                        setOpen(true)
+                      }}
+                      className="object-cover w-full h-full rounded-sm"
+                    />
+                  </div>
+                ))
+              ))
+            }
             {activeImages?.map((item: any, index: number) => (
               <div
                 className="aspect-square md:w-[33.3333%] sm:w-[50%] w-full rounded-sm p-4 group/item"

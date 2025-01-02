@@ -61,7 +61,7 @@ const SchoolsPage = async () => {
       {/* Impact Section */}
       <section className="py-16 bg-zinc-900">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Our Impact</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-white">Our Impact</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {impacts.map((impact, index) => (
               <div key={index} className="text-center">
@@ -71,7 +71,7 @@ const SchoolsPage = async () => {
                 <div className="text-4xl font-bold text-green-600 mb-2">
                   {data[impact?.name as keyof typeof data]}
                 </div>
-                <div className="text-gray-700">{impact.description}</div>
+                <div className="text-gray-200">{impact.description}</div>
               </div>
             ))}
           </div>
@@ -88,7 +88,7 @@ const SchoolsPage = async () => {
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Make a lasting impact on your students and the environment
           </p>
-          <Button variant='outline' asChild>
+          <Button variant='destructive' asChild>
             <a target="_blank" href="https://gco-student.vercel.app/">
               Get Started
             </a>

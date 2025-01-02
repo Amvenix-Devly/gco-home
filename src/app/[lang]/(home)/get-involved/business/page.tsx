@@ -179,10 +179,10 @@ const benefits = [
 ]
 
 const impacts = [
-  { number: '1M+', description: 'Trees Planted' },
-  { number: '500+', description: 'Corporate Partners' },
-  { number: '50+', description: 'Conservation Projects' },
-  { number: '100K+', description: 'Tonnes of CO2 Offset' }
+  { number: '50k+', description: 'Trees Planted' },
+  { number: '5+', description: 'Corporate Partners' },
+  { number: '1', description: 'Conservation Projects' },
+  { number: '10k', description: 'Tonnes of CO2 Offset' }
 ]
 
 const tiers = [

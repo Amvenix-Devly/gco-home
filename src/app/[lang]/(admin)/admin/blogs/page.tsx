@@ -62,6 +62,10 @@ const allCategory = async () =>
   })
 const allBlog = async () =>
   await db?.blogPost.findMany({
+    take: 40,
+    orderBy: {
+      createdAt: "desc",
+    },
     select: {
       id: true,
       title: true,

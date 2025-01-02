@@ -1,15 +1,15 @@
 import AdminPageLayout from '@/components/custom/admin/shared/AdminPageLayout'
-import db from '@/lib/db'
-import AddCategory from './AddCategory'
 import {
   Table,
-  TableHeader,
   TableBody,
-  TableRow,
-  TableHead,
   TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
 } from "@/components/ui/table"
-import Link from "next/link"
+import db from '@/lib/db'
+import AddCategory from './AddCategory'
+import UpdatCat from './Updatecategory'
 
 
 
@@ -38,9 +38,7 @@ const BlogCategorysPage = async () => {
               <TableCell>{category.name}</TableCell>
               <TableCell>{category._count.BlogPost}</TableCell>
               <TableCell>
-                <Link href={`/admin/categories/update/${category.id}`} className='opacity-35'>
-                  Update
-                </Link>
+               <UpdatCat id={category.id} value = {category.name} />
               </TableCell>
             </TableRow>
           ))}
