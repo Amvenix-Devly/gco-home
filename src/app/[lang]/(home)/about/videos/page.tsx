@@ -4,7 +4,7 @@ const VideosPage = async () => {
   const url = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&order=date&part=snippet&type=video&maxResults=21`
   const response = await fetch(url, {
     next: {
-      revalidate: 86400,
+      revalidate: 0,
     },
   })
   const data = await response.json()

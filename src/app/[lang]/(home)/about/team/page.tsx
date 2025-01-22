@@ -299,7 +299,6 @@ const ItemCard = ({ item }: any) => {
             height={200}
             width={200}
             className="rounded-full w-1/2"
-            placeholder='blur'
           />
         </div>
         <a

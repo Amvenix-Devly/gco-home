@@ -27,7 +27,7 @@ const SlideItem = ({ src, inview, text }: any) => {
         alt="Picture of the author"
         width={600}
         height={600}
-        placeholder="blur"
+       
       />
     </div>
   )

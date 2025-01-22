@@ -4,41 +4,7 @@
 import Logo from '@/components/shared/Logo'
 import { cn } from '@/lib/utils'
 import { ChevronDown, Search } from 'lucide-react'
-import Image from 'next/image'
 import Link from 'next/link'
-
-const ItemWithImage = ({
-  title,
-  path,
-  imgSrc,
-  className,
-}: {
-  title: string
-  path: string
-  imgSrc: string
-  className?: string
-}) => {
-  return (
-    <Link
-      className={cn(
-        'aspect-square w-60 bg-blue-800 relative rounded overflow-hidden flex justify-center items-center group',
-        className
-      )}
-      href={path}
-    >
-      <Image
-        className="absolute top-0 left-0 right-0 bottom-0 object-cover size-full group-hover:brightness-[80%] transition duration-300"
-        width={200}
-        height={200}
-        src={imgSrc}
-        alt="nav image"
-      />
-      <h1 className="font-black uppercase relative z-10 text-3xl text-center text-black bg-white bg-opacity-35 w-full py-2 mx-2 rounded backdrop-blur-md dark:bg-black dark:bg-opacity-50 dark:text-white">
-        {title}
-      </h1>
-    </Link>
-  )
-}
 
 const DesktopNav = () => {
   return (
@@ -48,147 +14,98 @@ const DesktopNav = () => {
           <Logo className="w-[150px] h-[48px]" />
           <div className="flex flex-row  gap-3 xl:gap-5">
             <NavItem title="Home" path="/" />
+            
             <NavItem title="About Us" path="#">
-              <div className="flex justify-center gap-10 w-full mt-3">
-                <ItemWithImage
-                  className="bg-zinc-700 bg-opacity-40"
-                  title="About GCO"
-                  path="/about"
-                  imgSrc="/logo_sq.png"
-                />
-                <ItemWithImage
-                  className="bg-zinc-700 bg-opacity-40"
-                  title="Our Team"
-                  path="/about/team"
-                  imgSrc="/img/desktopnav/about/team.jpg"
-                />
-                <ItemWithImage
-                  className="bg-zinc-700 bg-opacity-40"
-                  title="Our Strength"
-                  path="/about/strength"
-                  imgSrc="/img/desktopnav/about/stength.jpg"
-                />
-                <div className="aspect-square w-60 bg-black bg-opacity-25 p-3 rounded backdrop-blur-md">
-                  <p className="font-bold text-xl">Our Impact</p>
-                  <div className="ml-3 mt-1">
-                    <Link href="/api/report2023" className='hover:underline'>Annual report 2023</Link>
-                  </div>
-                </div>
+              <div className="flex justify-around flex-wrap">
+                <NavListItem title="Our Organization" path="/about">
+                  <LinkItem title="About GCO" path="/about#about" />
+                  <LinkItem title="Mission vision" path="/about#mission" />
+                  <LinkItem title="History of GCO" path="/about#histry" />
+                </NavListItem>
+                <NavListItem title="Our Team" path="/about/team">
+                  <LinkItem title="Board Of Director" path="/about/team#BOARD OF DIRECTOR" />
+                  <LinkItem title="Executive Member" path="/about/team#EXECUTIVE MEMBER" />
+                  <LinkItem title="Adviser Council" path="/about/team#ADVISER COUNCIL" />
+                  <LinkItem title="Gco Staff" path="/about/team#GCO STAFF" />
+                  <LinkItem title="Tyagi Executive" path="/about/team#TYAGI EXECUTIVE" />
+                </NavListItem>
+                <NavListItem title="Our Strength" path="/about/strength">
+                  <LinkItem title="Tyagi volunteer" path="/about/strength#tyagiVolunteer" />
+                  <LinkItem title="Tyagi foundation" path="/about/strength#tyagiFoundation" />
+                  <LinkItem title="Tyagi research center" path="/about/strength#tyagiResearchCenter" />
+                  <LinkItem title="Tyagi enterprise" path="/about/strength#tyagiEnterprise" />
+                  <LinkItem title="Global nation" path="/about/strength/globalNation" />
+                  <LinkItem title="GCO Nursery" path="/about/strength#gcoNursery" />
+                  <LinkItem title="treelanching" path="/about/strength#treelanching" />
+                </NavListItem>
+                <NavListItem title="Our Impact" path="#">
+                  <LinkItem title="Annual report 2023" path="/api/report2023" />
+                </NavListItem>
               </div>
             </NavItem>
+
             <NavItem title="NEWS & STORIES" path="#">
-              <div className="flex justify-center gap-10 w-full mt-3">
-                <ItemWithImage
-                  title="Social media"
-                  path="#social"
-                  imgSrc="/img/desktopnav/news/social.jpg"
-                />
-                <ItemWithImage
-                  title="Blogs"
-                  path="/blog"
-                  imgSrc="/img/desktopnav/news/blog.jpg"
-                />
-                <ItemWithImage
-                  title="Videos"
-                  path="/about/videos"
-                  imgSrc="/img/desktopnav/news/vidio.jpg"
-                />
-                <ItemWithImage
-                  className="text-black"
-                  title="Gallery"
-                  path="/about/photo-gallery"
-                  imgSrc="/img/desktopnav/news/gallary.jpg"
-                />
+              <div className="flex justify-between flex-wrap">
+                <NavListItem title="NEWS & STORIES" path="#">
+                  <LinkItem title="Social media" path="#" />
+                  <LinkItem title="News" path="#" />
+                  <LinkItem title="Stories" path="#" />
+                  <LinkItem title="Vidios" path="/about/videos" />
+                  <LinkItem title="Gallary" path="/about/photo-gallery" />
+                </NavListItem>
               </div>
             </NavItem>
 
             <NavItem title="Get Involved" path="#">
-              <div className="flex justify-center gap-10 w-full mt-3">
-                <ItemWithImage
-                  title="Businesses"
-                  path="/get-involved/business"
-                  imgSrc="/img/desktopnav/cor.jpg"
-                />
-                <ItemWithImage
-                  title="Individuals"
-                  path="/get-involved/individuals"
-                  imgSrc="/img/desktopnav/ind.jpg"
-                />
-                <ItemWithImage
-                  title="Schools"
-                  path="/get-involved/schools"
-                  imgSrc="/img/desktopnav/stu.jpg"
-                />
-              </div>
-            </NavItem>
-            <NavItem title="What we do" path="#">
-              <div className="flex justify-center gap-5 w-full mt-1 flex-wrap">
-                <ItemWithImage
-                  title="Climate action"
-                  path="/what-we-do#climate action"
-                  imgSrc="/img/desktopnav/whatwedo/climetaction.jpg"
-                />
-                <ItemWithImage
-                  title="Health"
-                  path="/what-we-do#health"
-                  imgSrc="/img/desktopnav/whatwedo/health.jpg"
-                />
-                <ItemWithImage
-                  title="Food Security"
-                  path="/what-we-do#Food Security"
-                  imgSrc="/img/desktopnav/whatwedo/food.jpg"
-                />
-                <ItemWithImage
-                  title="Human Rights"
-                  path="/what-we-do#Human Rights"
-                  imgSrc="/img/desktopnav/whatwedo/human.jpg"
-                />
-                <ItemWithImage
-                  title="Events"
-                  path="/what-we-do#events"
-                  imgSrc="/img/desktopnav/whatwedo/event.jpg"
-                />
-                <ItemWithImage
-                  title="Campaigns"
-                  path="/what-we-do#campaigns"
-                  imgSrc="/img/desktopnav/whatwedo/campain.png"
-                />
-                <ItemWithImage
-                  title="Training"
-                  path="/what-we-do#training"
-                  imgSrc="/img/desktopnav/whatwedo/training.jpg"
-                />
-              </div>
-            </NavItem>
-            <NavItem title="Projects" path="#">
               <div className="flex gap-10 flex-wrap">
-                <div className="flex justify-center gap-5 w-full mt-1 flex-wrap">
-                  <ItemWithImage
-                    title="Completed Project"
-                    path="/project/complete-project"
-                    imgSrc="/img/desktopnav/cor.jpg"
-                  />
-                  <ItemWithImage
-                    title="On Going Project"
-                    path="/project/on-going-project"
-                    imgSrc="/img/desktopnav/ind.jpg"
-                  />
-                  <ItemWithImage
-                    title="Event"
-                    path="/project/events"
-                    imgSrc="/img/desktopnav/whatwedo/event.jpg"
-                  />
-                  <ItemWithImage
-                    title="Training"
-                    path="/project/training"
-                    imgSrc="/img/desktopnav/training.jpg"
-                  />
-                  <ItemWithImage
-                    title="Up coming program"
-                    path="/project/up-comeing-project"
-                    imgSrc="/img/desktopnav/upproject.jpg"
-                  />
-                </div>
+                <NavListItem title="Businesses" path="#">
+                  <LinkItem title="Become A Partner" path="#" />
+                  <LinkItem title="Partners" path="#" />
+                  <LinkItem title="Cryptocurrency" path="#" />
+                  <LinkItem title="Sports Sustainability" path="#" />
+                </NavListItem>
+                <NavListItem title="Individuals" path="#">
+                  <LinkItem title="Monthly Giving" path="#" />
+                  <LinkItem title="Planned Giving" path="#" />
+                  <LinkItem title="Become A Tree Ambassador" path="#" />
+                  <LinkItem title="Teachers & Parents" path="#" />
+                </NavListItem>
+              </div>
+            </NavItem>
+
+            <NavItem title="What we do" path="#">
+              <div className="flex gap-10 flex-wrap">
+                <NavListItem title="Climate action" path="/what-we-do">
+                  <LinkItem title="One tree for one child" path="/what-we-do" />
+                  <LinkItem title="Save life from thunderstorms with plants" path="/what-we-do" />
+                  <LinkItem title="Sponsor a tree for future child in Bangladesh" path="/what-we-do" />
+                  <LinkItem title="Disaster Resilience and Relief Programs" path="/what-we-do" />
+                </NavListItem>
+                <NavListItem title="Health" path="/what-we-do">
+                  <LinkItem title="Maternal and Child Health in Bangladesh Slums" path="/what-we-do" />
+                  <LinkItem title="Maternal & Child Nutrition in Char Land, Bangladesh" path="/what-we-do" />
+                </NavListItem>
+                <NavListItem title="Food Security" path="/what-we-do">
+                  <LinkItem title="Addressing Hunger Among Bangladesh's Elderly" path="/what-we-do" />
+                  <LinkItem title="Abalamban – Self-Reliance" path="/what-we-do" />
+                  <LinkItem title="Cluster Village Program" path="/what-we-do" />
+                </NavListItem>
+                <NavListItem title="Human Rights" path="/what-we-do">
+                  <LinkItem title="Skill development program" path="/what-we-do" />
+                </NavListItem>
+                <NavListItem title="Our Events" path="/what-we-do">
+                  <LinkItem title="Skill development program" path="/what-we-do" />
+                </NavListItem>
+              </div>
+            </NavItem>
+
+            <NavItem title="Where we do" path="#">
+              <div className="flex justify-between flex-wrap">
+                <NavListItem title="" path="#">
+                  <LinkItem title="Bangladesh" path="#" />
+                  <LinkItem title="Zimbabwe" path="#" />
+                  <LinkItem title="Uganda" path="#" />
+                </NavListItem>
               </div>
             </NavItem>
           </div>
@@ -228,7 +145,9 @@ const NavItem = ({
         {children && <ChevronDown className="size-4" />}
       </Link>
       {children && (
-        <div className="absolute top-[80%]  bg-opacity-80 w-screen left-0 desktopLinkContent opacity-0 z-40 pointer-events-none transition-opacity duration-300 ease-in-out">
+        <div
+          className="absolute top-[80%]  bg-opacity-80 w-screen left-0 desktopLinkContent opacity-0 z-40 pointer-events-none transition-opacity duration-300 ease-in-out"
+        >
           <div className="bg-black bg-opacity-80 mt-[12px] h-[300px] overflow-x-auto scrollbar">
             <div className="container px-10 py-3 ">{children}</div>
           </div>
@@ -255,7 +174,7 @@ const NavListItem = ({
         className={cn(
           'text-xl underline underline-offset-[10px] capitalize  opacity-80 hover:opacity-100 hover:drop-shadow-lg hover:shadow-white',
           className
-        )}
+        )} 
         href={path}
       >
         {title}

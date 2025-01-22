@@ -29,7 +29,6 @@ const MiniWOrdlMap = () => {
         const res = await fetch('https://app.globalcommunityorganization.org/api/getdata')
         const data = await res.json()
         setData(data)
-
       }
       fetchData()
     }  }, [isIntersecting])
