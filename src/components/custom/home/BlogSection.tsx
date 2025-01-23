@@ -89,8 +89,8 @@ const BigNews = ({
       <div className="h-[200px] sm:h-[300px] w-full ">
         <Image
           className="w-full h-full object-cover rounded"
-          width={1000}
-          height={1000}
+          width={400}
+          height={400}
           src={image}
           alt={title}
         />
