@@ -7,8 +7,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import db from '@/lib/db'
-import { ProjectType } from '../../../../../../dbOut'
-
+import { ProjectType } from '@prisma/client'
 const OnGoingProject = async () => {
   const allOnGoingProject = await db.project.findMany({
     where: {

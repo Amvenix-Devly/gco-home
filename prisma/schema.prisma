@@ -1,6 +1,6 @@
 generator client {
   provider      = "prisma-client-js"
-  output        = "../dbOut"
+  // output        = "../dbOut"
   binaryTargets = ["native", "debian-openssl-1.1.x"]
 }
 
@@ -219,6 +219,18 @@ model Subscriber {
   id        Int      @id @default(autoincrement())
   name      String
   email     String   @unique
-  custom    Boolean? 
+  custom    Boolean?
   createdAt DateTime @default(now())
+}
+
+model AnnulReport {
+  id    Int    @id @default(autoincrement())
+  title String
+  url   String
+}
+
+model AuditReport {
+  id    Int    @id @default(autoincrement())
+  title String
+  url   String
 }

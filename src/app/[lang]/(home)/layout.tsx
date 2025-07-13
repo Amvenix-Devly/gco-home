@@ -6,6 +6,11 @@ import { I18nProviderClient } from '@/locales/client'
 import type { ReactElement } from 'react'
 import 'slick-carousel/slick/slick-theme.css'
 import 'slick-carousel/slick/slick.css'
+import db from '@/lib/db'
+
+const getAllAuditreport = async () => {
+  return await db.auditReport.findMany({})
+}
 
 const SubLayout = async ({
   params,
@@ -15,6 +20,8 @@ const SubLayout = async ({
   children: ReactElement
 }) => {
   const { lang } = await params
+  const all = await getAllAuditreport()
+
   return (
     <ThemeProviderClient
       attribute="class"
@@ -28,7 +35,7 @@ const SubLayout = async ({
           <Nav />
         </div>
         <main className='md:pt-[97px] pt-[40px]'>{children}</main>
-        <Footer />
+        <Footer fiReport={all} />
       </I18nProviderClient>
     </ThemeProviderClient>
   )

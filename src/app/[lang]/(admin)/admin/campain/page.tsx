@@ -5,9 +5,10 @@ import Image from 'next/image'
 import { headers } from 'next/headers'
 import { getUser, isAdmin } from '@/lib/auth'
 import UploadFile from '@/lib/ImageKit'
-import { FileType } from '../../../../../../dbOut'
+
 import { AddCampain, DeleteCampain, EditCampain, FilterCampains } from './client'
 import { imageKit } from '@/lib/ImageKit'
+import { FileType } from '@prisma/client'
 
 const CampainPage = async (x: { searchParams: Promise<{ q: string }> }) => {
   const { q } = await x.searchParams

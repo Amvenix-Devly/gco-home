@@ -12,7 +12,7 @@ import db from '@/lib/db'
 import { headers } from 'next/headers'
 import { AddTraining, DeleteTraining, EditTraining, FilterTrainings } from './client'
 import UploadFile from '@/lib/ImageKit'
-import { FileType } from '../../../../../../dbOut'
+import { FileType } from '@prisma/client' 
 import Image from 'next/image'
 import { imageKit } from '@/lib/ImageKit'
 

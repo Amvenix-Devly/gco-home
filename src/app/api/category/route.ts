@@ -1,7 +1,7 @@
 import { getSession } from '@/lib/auth-client'
 import { headers } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
-import { Role } from '../../../../dbOut'
+import { Role } from '@prisma/client' 
 
 export const POST = async (req: NextRequest) => {
   const {

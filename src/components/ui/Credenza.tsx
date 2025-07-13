@@ -55,8 +55,7 @@ const CredenzaTrigger = ({ className, children, ...props }: CredenzaProps) => {
   const isDesktop = useMediaQuery(desktop)
   const CredenzaTrigger = isDesktop ? DialogTrigger : DrawerTrigger
 
-
-  if ( isLoading ) return null
+  // Always render the trigger
   return (
     <CredenzaTrigger className={className} {...props}>
       {children}
@@ -68,7 +67,7 @@ const CredenzaClose = ({ className, children, ...props }: CredenzaProps) => {
   const loading = useLoading()
   const isDesktop = useMediaQuery(desktop)
   const CredenzaClose = isDesktop ? DialogClose : DrawerClose
-  if (loading) return null
+  
   return (
     <CredenzaClose className={className} {...props}>
       {children}
@@ -80,7 +79,7 @@ const CredenzaContent = ({ className, children, ...props }: CredenzaProps) => {
   const isDesktop = useMediaQuery(desktop)
   const loading = useLoading()
   const CredenzaContent = isDesktop ? DialogContent : DrawerContent
- if (loading) return null
+  
   return (
     <CredenzaContent className={className} {...props}>
       {children}
@@ -96,7 +95,7 @@ const CredenzaDescription = ({
   const loading = useLoading()
   const isDesktop = useMediaQuery(desktop)
   const CredenzaDescription = isDesktop ? DialogDescription : DrawerDescription
-  if (loading) return null
+  
   return (
     <CredenzaDescription className={className} {...props}>
       {children}
@@ -119,7 +118,8 @@ const CredenzaTitle = ({ className, children, ...props }: CredenzaProps) => {
   const isDesktop = useMediaQuery(desktop)
   const loading = useLoading()
   const CredenzaTitle = isDesktop ? DialogTitle : DrawerTitle
-  if (loading) return null
+  
+  // Always render the title for accessibility, even during loading
   return (
     <CredenzaTitle className={className} {...props}>
       {children}

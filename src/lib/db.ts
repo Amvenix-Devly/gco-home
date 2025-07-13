@@ -1,4 +1,4 @@
-import { PrismaClient } from "../../dbOut";
+import { PrismaClient } from '@prisma/client';
 
 
 declare global {

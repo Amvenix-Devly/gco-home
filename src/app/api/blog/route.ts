@@ -1,9 +1,10 @@
 import { getSession } from '@/lib/auth-client'
 import db from '@/lib/db'
 import UploadFile, { imageKit } from '@/lib/ImageKit'
+import { FileType, Role } from '@prisma/client'
 import { headers } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
-import { FileType, Role } from '../../../../dbOut'
+
 
 export const POST = async (req: NextRequest) => {
   const {

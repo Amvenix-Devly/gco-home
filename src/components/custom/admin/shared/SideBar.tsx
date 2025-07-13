@@ -10,6 +10,7 @@ import {
   CalendarDays,
   ChevronLeft,
   Facebook,
+  File,
   Globe,
   Home,
   LogOut,
@@ -41,122 +42,141 @@ const AdminSideBar = ({ toggled, setToggled }: any) => {
       collapsed={collapsed}
       onBackdropClick={() => setToggled(false)}
       toggled={toggled}
-      breakPoint="md"
+      breakPoint='md'
     >
-      <Logo className="xl:!w-[200px]" />
-      <div className="mt-10 flex flex-col justify-between h-[calc(100vh-120px)] px-2">
+      <Logo className='xl:!w-[200px]' />
+      <div className='mt-10 flex flex-col justify-between h-[calc(100vh-120px)] px-2'>
         <ScrollArea>
-          <div className="flex-col flex gap-2">
+          <div className='flex-col flex gap-2'>
             <SideBarLinkButton
               setToggled={setToggled}
-              link="/admin"
+              link='/admin'
               active={'/admin' === path}
             >
               {!collapsed && 'Home'}
-              <Home className="size-5" />
+              <Home className='size-5' />
             </SideBarLinkButton>
             <SideBarLinkButton
               setToggled={setToggled}
-              link="/admin/blogs"
+              link='/admin/blogs'
               active={'/admin/blogs' === path}
             >
               {!collapsed && 'Blogs'}
 
-              <Notebook className="size-5" />
+              <Notebook className='size-5' />
             </SideBarLinkButton>
             <SideBarLinkButton
               setToggled={setToggled}
-              link="/admin/fb"
+              link='/admin/fb'
               active={'/admin/fb' === path}
             >
               {!collapsed && 'Fb Post'}
 
-              <Facebook className="size-5" />
+              <Facebook className='size-5' />
             </SideBarLinkButton>
             <SideBarLinkButton
               setToggled={setToggled}
-              link="/admin/x"
+              link='/admin/x'
               active={'/admin/x' === path}
             >
               {!collapsed && 'Twitter Post'}
 
-              <Twitter className="size-5" />
+              <Twitter className='size-5' />
             </SideBarLinkButton>
             <SideBarLinkButton
               setToggled={setToggled}
-              link="/admin/projects"
+              link='/admin/projects'
               active={'/admin/projects' === path}
             >
               {!collapsed && 'Projects'}
 
-              <BarChartHorizontal className="size-5" />
+              <BarChartHorizontal className='size-5' />
             </SideBarLinkButton>
             <SideBarLinkButton
               setToggled={setToggled}
-              link="/admin/events"
+              link='/admin/events'
               active={'/admin/events' === path}
             >
               {!collapsed && 'Events'}
 
-              <CalendarDays className="size-5" />
+              <CalendarDays className='size-5' />
             </SideBarLinkButton>
             <SideBarLinkButton
               setToggled={setToggled}
-              link="/admin/training"
+              link='/admin/training'
               active={'/admin/training' === path}
             >
               {!collapsed && 'Training'}
 
-              <AppWindowMac className="size-5" />
+              <AppWindowMac className='size-5' />
             </SideBarLinkButton>
             <SideBarLinkButton
               setToggled={setToggled}
-              link="/admin/campain"
+              link='/admin/campain'
               active={'/admin/campain' === path}
             >
               {!collapsed && 'Campain'}
 
-              <StarIcon className="size-5" />
+              <StarIcon className='size-5' />
             </SideBarLinkButton>
             <SideBarLinkButton
               setToggled={setToggled}
-              link="/admin/up-comeing-project"
+              link='/admin/up-comeing-project'
               active={'/admin/up-comeing-project' === path}
             >
               {!collapsed && 'Up Commig Project'}
 
-              <StarIcon className="size-5" />
+              <StarIcon className='size-5' />
             </SideBarLinkButton>
             <SideBarLinkButton
               setToggled={setToggled}
-              link="/admin/email"
+              link='/admin/email'
               active={'/admin/email' === path}
             >
               {!collapsed && 'Send Email'}
 
-              <Mail className="size-5" />
+              <Mail className='size-5' />
             </SideBarLinkButton>
+
+            <SideBarLinkButton
+              setToggled={setToggled}
+              link='/admin/annul-report'
+              active={'/admin/annul-report' === path}
+            >
+              {!collapsed && 'Annual Report'}
+              <File className='size-5' />
+            </SideBarLinkButton>
+
+            <SideBarLinkButton
+              setToggled={setToggled}
+              link='/admin/audit-report'
+              active={'/admin/audit-report' === path}
+            >
+              {!collapsed && 'Audit Report'}
+              <File className='size-5' />
+            </SideBarLinkButton>
+
             <Button
-              variant="outline"
-              className="w-full flex justify-center gap-4 items-center bg-red-500 text-white"
+              variant='outline'
+              className='w-full flex justify-center gap-4 items-center bg-red-500 text-white'
             >
               {!collapsed && 'Logout'}
-              <LogOut className="size-4" />
+              <LogOut className='size-4' />
             </Button>
           </div>
         </ScrollArea>
-        <div className="px-2 space-y-2">
+        <div className='px-2 space-y-2'>
           <Button
-            variant="outline"
-            className="w-full flex justify-center gap-4 items-center"
+            variant='outline'
+            className='w-full flex justify-center gap-4 items-center'
             onClick={() => router.push('/')}
           >
             {!collapsed && 'Back to site'}
             <Globe className={cn('size-5')} />
           </Button>
           <Button
-            variant="outline"
-            className="w-full flex justify-center gap-4 items-center"
+            variant='outline'
+            className='w-full flex justify-center gap-4 items-center'
             onClick={() => setCollapsed(!collapsed)}
           >
             {!collapsed && 'Collaps'}
@@ -168,15 +188,15 @@ const AdminSideBar = ({ toggled, setToggled }: any) => {
             />
           </Button>
           <Button
-            variant="outline"
-            className="w-full flex justify-center gap-4 items-center"
+            variant='outline'
+            className='w-full flex justify-center gap-4 items-center'
             onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
           >
             {!collapsed && theme}
             {theme === 'light' ? (
-              <Sun className="size-5" />
+              <Sun className='size-5' />
             ) : (
-              <Moon className="size-5" />
+              <Moon className='size-5' />
             )}
           </Button>
         </div>
