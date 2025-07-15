@@ -1,8 +1,8 @@
 'use client'
+import { subscribeToNewsletter } from '@/app/[lang]/(home)/newsletter/action'
 import { Facebook, Instagram, Linkedin, Mail, X, Youtube } from 'lucide-react'
 import Link from 'next/link'
 import { useState, useTransition } from 'react'
-import { subscribeToNewsletter } from '@/app/[lang]/(home)/newsletter/action'
 import {
   Accordion,
   AccordionContent,
@@ -23,7 +23,7 @@ const Footer = ({
 }) => {
   return (
     <section className='bg-bgMain text-white'>
-      <MobileFooter />
+      <MobileFooter fiReport={fiReport} />
       <DesktopFooter fiReport={fiReport} />
       <BootomBar />
     </section>
@@ -95,7 +95,15 @@ const NewsletterForm = () => {
   )
 }
 
-const MobileFooter = () => {
+const MobileFooter = ({
+  fiReport,
+}: {
+  fiReport: {
+    id: number
+    title: string
+    url: string
+  }[]
+}) => {
   return (
     <footer className='md:hidden container px-3'>
       <div>
@@ -200,9 +208,17 @@ const MobileFooter = () => {
               </AccordionTrigger>
               <AccordionContent>
                 <div className='flex flex-col gap-2'>
-                  <Link href='#'>2023 Audit Report</Link>
-                  <Link href='#'>2022 Audit Report</Link>
-                  <Link href='#'>2021 Audit Report</Link>
+                  {
+                    fiReport.map((report) => (
+                      <Link
+                        className='hover:underline'
+                        key={report.id}
+                        href={report.url}
+                      >
+                        {report.title}
+                      </Link>
+                    ))
+                  }
                 </div>
               </AccordionContent>
             </AccordionItem>

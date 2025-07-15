@@ -26,6 +26,7 @@ import {
 import { useTheme } from 'next-themes'
 import { usePathname, useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { BsPeople } from 'react-icons/bs'
 import { Sidebar } from 'react-pro-sidebar'
 
 const AdminSideBar = ({ toggled, setToggled }: any) => {
@@ -154,6 +155,15 @@ const AdminSideBar = ({ toggled, setToggled }: any) => {
             >
               {!collapsed && 'Audit Report'}
               <File className='size-5' />
+            </SideBarLinkButton>
+
+            <SideBarLinkButton
+              setToggled={setToggled}
+              link='/admin/members'
+              active={'/admin/members' === path}
+            >
+              {!collapsed && 'Manage Members'}
+              <BsPeople className='size-5' />
             </SideBarLinkButton>
 
             <Button

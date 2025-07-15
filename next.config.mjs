@@ -10,6 +10,9 @@ const nextConfig = {
       {
         hostname: 'images.pexels.com',
       },
+      {
+        hostname: 'img.freepik.com',
+      },
     ],
   },
   eslint: {

@@ -1,10 +1,11 @@
-/* eslint-disable @next/next/no-img-element */
+
 'use client'
 
 import Logo from '@/components/shared/Logo'
 import { cn } from '@/lib/utils'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronDown, Menu, Search, ShoppingBag, X } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -241,7 +242,7 @@ const ImageBox = ({
   return (
     <div className='ml-5 mt-3'>
       <div>
-        <img
+        <Image
           className='h-full w-full object-cover'
           width={500}
           height={500}

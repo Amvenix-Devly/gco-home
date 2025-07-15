@@ -1,12 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 'use client'
 
-import GaugeCircle from '@/components/ui/aimate/gauge-circle'
 
-import { useIntersectionObserver } from 'usehooks-ts'
-import dynamic from 'next/dynamic'
 import { Loader2 } from 'lucide-react'
+import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
+import { useIntersectionObserver } from 'usehooks-ts'
 
 const Map = dynamic(() => import('./Map'), {
   ssr: false,
@@ -15,6 +14,11 @@ const Map = dynamic(() => import('./Map'), {
       <Loader2 className='animate-spin' size={25} />
     </div>
   ),
+})
+
+const GaugeCircle = dynamic(() => import('@/components/ui/aimate/gauge-circle'), {
+  ssr: false,
+  loading: () => null
 })
 
 const MiniWOrdlMap = () => {
@@ -47,7 +51,7 @@ const MiniWOrdlMap = () => {
             planet, enhancing community health and inspiring lifelong
             stewardship of nature.
           </p>
-          <div className="flex flex-col gap-10 items-start mt-10 sm:flex-row justify-between">
+          {isIntersecting && <div className="flex flex-col gap-10 items-start mt-10 sm:flex-row justify-between">
             <div className="flex flex-col items-center ">
               <GaugeCircle
                 max={data.tree+ 10000}
@@ -94,7 +98,7 @@ const MiniWOrdlMap = () => {
 
 
             
-          </div>
+          </div>}
         </div>
         <div className="flex justify-center md:items-center md:w-[60%]">
           <div className="mt-10 md:mt-0 w-[90%] md:w-full h-[400px]">

@@ -234,3 +234,33 @@ model AuditReport {
   title String
   url   String
 }
+
+model MemberType {
+  id       Int      @id @default(autoincrement())
+  title    String
+  position Int      @default(0)
+  Member   Member[]
+
+  @@map("member_type")
+}
+
+model Member {
+  id       Int    @id @default(autoincrement())
+  name     String
+  position Int    @default(0)
+  title    String
+
+  imageId  String?
+  imageUrl String?
+  phone    String?
+  email    String?
+  facebook String?
+
+  previous Boolean @default(false)
+
+  typeId Int?
+  type   MemberType? @relation(fields: [typeId], references: [id], onDelete: SetNull)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

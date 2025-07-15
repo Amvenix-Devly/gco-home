@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import ShinyButton from '@/components/ui/aimate/shiny-button'
 import { Coins } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 

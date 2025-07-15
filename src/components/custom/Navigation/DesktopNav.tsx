@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 'use client'
 
 import Logo from '@/components/shared/Logo'
@@ -28,8 +27,8 @@ const ItemWithImage = ({
     >
       <Image
         className='absolute top-0 left-0 right-0 bottom-0 object-cover size-full group-hover:brightness-[80%] transition duration-300'
-        width={100}
-        height={100}
+        width={300}
+        height={300}
         src={imgSrc}
         alt='nav image'
       />
@@ -296,7 +295,7 @@ const ImageBox = ({
   return (
     <div className='ml-5 mt-3 w-[24vw] max-w-[300px]'>
       <div className='aspect-square '>
-        <img
+        <Image
           className='h-full w-full object-cover'
           width={500}
           height={500}
