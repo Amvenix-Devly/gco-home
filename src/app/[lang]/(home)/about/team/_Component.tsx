@@ -1,23 +1,16 @@
 'use client'
+
 import {
   SweetchLayoutContent,
   SweetchLayoutSidebar,
   Switch,
   SwitchLayoutParant,
 } from '@/components/shared/SwitchLayout'
-
 import { cn } from '@/lib/utils'
-import { Facebook, Mail, Phone } from 'lucide-react'
+import { Facebook, Loader, Loader2, Mail, Phone } from 'lucide-react'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-
-type TeamData = {
-  [key: string]: {
-    name: string
-    position: string
-    image: any
-  }[]
-}
+import useSWR from 'swr'
 
 type Member = {
   id: number
@@ -40,13 +33,32 @@ type TeamComponentProps = {
   members?: MemberType[]
 }
 
+export interface GetTaigyVol {
+  name: string
+  email: any
+  phone: string
+  active: boolean
+  id: string
+  img: any
+  createdAt: string
+  type: string
+  joinIngDate: string
+}
+
 const TeamComponent = ({ members = [] }: TeamComponentProps) => {
+  const [active, setActive] = useState('')
+  const { data, error, isLoading } = useSWR(
+    `ok`,
+    async () =>
+      await fetch('https://gco-admin.vercel.app/api/tyagi').then(
+        (res) => res.json() as any as GetTaigyVol[]
+      )
+  )
+
   // Use only database data - filter out member types that have all previous members
   const memberTypes = members.filter((type) =>
     type.Member.some((member) => !member.previous)
   )
-
-  const [active, setActive] = useState('')
 
   // Get current members based on selection - only use database data
   const getCurrentMembers = () => {
@@ -58,12 +70,10 @@ const TeamComponent = ({ members = [] }: TeamComponentProps) => {
 
   // Get previous members - only use database data
   const getPreviousMembers = () => {
-    const allPreviousMembers: Member[] = []
-    members.forEach((type) => {
-      const previousMembers = type.Member.filter((member) => member.previous)
-      allPreviousMembers.push(...previousMembers)
-    })
-    return allPreviousMembers
+    const selectedType = members.find((type) => type.title === active)
+    return selectedType
+      ? selectedType.Member.filter((member) => member.previous)
+      : []
   }
 
   // Get type title helper
@@ -87,6 +97,14 @@ const TeamComponent = ({ members = [] }: TeamComponentProps) => {
       setActive(getTypeTitle(memberTypes[0]))
     }
   }, [members, memberTypes])
+
+  if (active === '') {
+    return (
+      <div className='w-full h-[60vh] flex justify-center items-center'>
+        <Loader2 className='animate-spin' />
+      </div>
+    )
+  }
 
   return (
     <>
@@ -119,6 +137,28 @@ const TeamComponent = ({ members = [] }: TeamComponentProps) => {
                 {getCurrentMembers().map((item: any, index: number) => (
                   <ItemCard key={index} item={item} />
                 ))}
+                {active === 'TYAGI VOLUNTEER' &&
+                  !isLoading &&
+                  data &&
+                  data?.length > 0 &&
+                  data?.map((item, index) => {
+                    if (item?.type === 'Admin') {
+                      return null
+                    }
+                    return (
+                      <ItemCard
+                        key={index}
+                        item={{
+                          name: item.name,
+                          position: item.type,
+                          imageUrl: item.img || null,
+                          phone: item.phone || null,
+                          email: item.email || null,
+                          facebook: null,
+                        }}
+                      />
+                    )
+                  })}
               </div>
             </SweetchLayoutContent>
           </SwitchLayoutParant>
@@ -132,7 +172,7 @@ const TeamComponent = ({ members = [] }: TeamComponentProps) => {
 
         {getPreviousMembers().length > 0 && (
           <div className=''>
-            <h1 className='text-xl text-center'>PREVIOUS BOARD MEMBER</h1>
+            <h1 className='text-xl text-center'>PREVIOUS MEMBER</h1>
             <div className=' block sm:flex flex-wrap mt-5 mb-10  justify-center items-center'>
               {getPreviousMembers().map((item, index) => (
                 <ItemCard
@@ -152,8 +192,8 @@ const TeamComponent = ({ members = [] }: TeamComponentProps) => {
 const ItemCard = ({ item, className }: any) => {
   // Handle both static data format and database data format
   const name = item.name
-  const position = item.position || item.title
-  const image = item.image || item.imageUrl || '/placeholder-image.jpg'
+  const position = item.position
+  const image = item.imageUrl
   const phone = item.phone
   const email = item.email
   const facebook = item.facebook
@@ -167,13 +207,14 @@ const ItemCard = ({ item, className }: any) => {
     >
       <div className='flex justify-center items-center flex-col h-full bg-opacity-90 rounded-lg bg-primary'>
         <div className='w-full flex justify-center items-center'>
-          {image && image !== '/placeholder-image.jpg' ? (
+          {image ? (
             <Image
               alt={name}
               src={image}
               height={200}
               width={200}
               className='rounded-full w-1/2'
+              key={item?.id}
             />
           ) : (
             <div className='w-1/2 aspect-square bg-gray-300 rounded-full flex items-center justify-center text-gray-600 text-4xl font-bold'>

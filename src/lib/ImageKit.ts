@@ -1,9 +1,9 @@
 import Imagekit from 'imagekit'
 
 export const imageKit = new Imagekit({
-  publicKey: 'public_S8fjs9kslVGIlAIZ8pQ2fBqSeNg=',
-  privateKey: 'private_Zj4yuGBmuSp6sAZKVvFLiZdrk9c=',
-  urlEndpoint: 'https://ik.imagekit.io/proshuvo',
+  publicKey: 'public_HWTFjcY9U+MQETONQK19IGSBtt4=',
+  privateKey: 'private_80LY2uCHWIdBg3hDz3i7Jul85tU=',
+  urlEndpoint: 'https://ik.imagekit.io/qaqsezzqo',
 })
 
 // un tested
