@@ -1,12 +1,12 @@
 generator client {
   provider      = "prisma-client-js"
-  // output        = "../dbOut"
   binaryTargets = ["native", "debian-openssl-1.1.x"]
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 enum Role {
@@ -16,10 +16,10 @@ enum Role {
 
 model User {
   id            String    @id
-  name          String    @db.Text
+  name          String
   email         String
   emailVerified Boolean
-  image         String?   @db.Text
+  image         String?
   createdAt     DateTime
   updatedAt     DateTime
   sessions      Session[]
@@ -36,8 +36,8 @@ model Session {
   token     String
   createdAt DateTime
   updatedAt DateTime
-  ipAddress String?  @db.Text
-  userAgent String?  @db.Text
+  ipAddress String?
+  userAgent String?
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -47,17 +47,17 @@ model Session {
 
 model Account {
   id                    String    @id
-  accountId             String    @db.Text
-  providerId            String    @db.Text
+  accountId             String
+  providerId            String
   userId                String
   user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  accessToken           String?   @db.Text
-  refreshToken          String?   @db.Text
-  idToken               String?   @db.Text
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
   accessTokenExpiresAt  DateTime?
   refreshTokenExpiresAt DateTime?
-  scope                 String?   @db.Text
-  password              String?   @db.Text
+  scope                 String?
+  password              String?
   createdAt             DateTime
   updatedAt             DateTime
 
@@ -66,8 +66,8 @@ model Account {
 
 model Verification {
   id         String    @id
-  identifier String    @db.Text
-  value      String    @db.Text
+  identifier String
+  value      String
   expiresAt  DateTime
   createdAt  DateTime?
   updatedAt  DateTime?
@@ -90,12 +90,9 @@ model File {
   type      FileType?
   createdAt DateTime   @default(now())
   BlogPost  BlogPost[]
-
-  Event Event[]
-
-  Training Training[]
-
-  Campain Campain[]
+  Event     Event[]
+  Training  Training[]
+  Campain   Campain[]
 }
 
 model BlogCategory {
@@ -109,7 +106,7 @@ model BlogCategory {
 model BlogPost {
   id           String       @id @default(uuid())
   title        String
-  content      String       @db.LongText
+  content      String
   coverImageID Int
   coverImage   File         @relation(fields: [coverImageID], references: [id])
   views        Int          @default(0)
@@ -122,13 +119,13 @@ model BlogPost {
 
 model FbEmbade {
   id        Int      @id @default(autoincrement())
-  embedCode String   @db.LongText
+  embedCode String
   createdAt DateTime @default(now())
 }
 
 model TwEmbade {
   id        Int      @id @default(autoincrement())
-  embedCode String   @db.LongText
+  embedCode String
   createdAt DateTime @default(now())
 }
 
@@ -201,10 +198,9 @@ model Campain {
 }
 
 model UpComingProgram {
-  id          Int     @id @default(autoincrement())
-  title       String
-  description String?
-
+  id            Int       @id @default(autoincrement())
+  title         String
+  description   String?
   date          DateTime?
   duration      String?
   place         String?
@@ -245,22 +241,18 @@ model MemberType {
 }
 
 model Member {
-  id       Int    @id @default(autoincrement())
-  name     String
-  position Int    @default(0)
-  title    String
-
-  imageId  String?
-  imageUrl String?
-  phone    String?
-  email    String?
-  facebook String?
-
-  previous Boolean @default(false)
-
-  typeId Int?
-  type   MemberType? @relation(fields: [typeId], references: [id], onDelete: SetNull)
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id        Int         @id @default(autoincrement())
+  name      String
+  position  Int         @default(0)
+  title     String
+  imageId   String?
+  imageUrl  String?
+  phone     String?
+  email     String?
+  facebook  String?
+  previous  Boolean     @default(false)
+  typeId    Int?
+  type      MemberType? @relation(fields: [typeId], references: [id], onDelete: SetNull)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
 }

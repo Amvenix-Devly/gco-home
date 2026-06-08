@@ -9,6 +9,7 @@ import { IoMailSharp } from 'react-icons/io5'
 import ReactMarkdown from 'react-markdown'
 import { Donate } from './c'
 
+export const dynamic = 'force-dynamic'
 const siteUrl = process.env.NEXT_PUBLIC_URL!
 const getBlog = async (id: string) =>
   await db?.blogPost.findUnique({
@@ -208,14 +209,7 @@ const ItemBlogPage = async ({ params }: any) => {
   )
 }
 
-export async function generateStaticParams() {
-  const allBlog = await db?.blogPost.findMany({
-    select: {
-      id: true,
-    },
-  })
-  return allBlog
-}
+
 
 import type { Metadata } from 'next'
 
@@ -254,3 +248,5 @@ export const generateMetadata = async ({ params }: any): Promise<Metadata> => {
   }
 }
 export default ItemBlogPage
+
+
